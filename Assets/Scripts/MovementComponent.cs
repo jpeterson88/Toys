@@ -35,8 +35,6 @@ namespace Assets.Scripts
 
             if (rb2d.velocity.magnitude < maxForce)
                 rb2d.AddForce(input * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
-
-            Debug.Log(rb2d.velocity.magnitude);
         }
     }
 }

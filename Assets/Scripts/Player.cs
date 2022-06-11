@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.State;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -12,6 +13,8 @@ namespace Assets.Scripts
         private StateEnum currentState;
 
         private bool previouslyGrounded;
+
+        public static Action OnLand = delegate { };
 
         private void Awake()
         {
@@ -28,8 +31,9 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            if (groundedDetector.IsGrounded() && currentState != StateEnum.Idle && currentState != StateEnum.Walk && currentState != StateEnum.Jump && currentState != StateEnum.Idle)
+            if (groundedDetector.IsGrounded() && !previouslyGrounded)
             {
+                OnLand?.Invoke();
                 currentState = StateEnum.Idle;
             }
             else if (!groundedDetector.IsGrounded() && previouslyGrounded)

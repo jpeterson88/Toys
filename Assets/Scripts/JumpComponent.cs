@@ -12,12 +12,10 @@ namespace Assets.Scripts
 
         private JumpSquashWobble jumpSquashWobble;
         private Rigidbody2D rb2d;
-        private Player player;
 
         private void Awake()
         {
             rb2d = GetComponentInParent<Rigidbody2D>();
-            player = GetComponentInParent<Player>();
             jumpSquashWobble = GetComponent<JumpSquashWobble>();
         }
 
