@@ -11,6 +11,7 @@ namespace Assets.Scripts.Interactables
         [SerializeField] private int layerNumber;
         [SerializeField] private float cooldownPerHit;
         [SerializeField] private int allowedHitCount;
+        [SerializeField] [Range(0, 1)] private float stopObjectPercentage;
 
         private float currentTimer;
         private bool wasHit;
@@ -38,7 +39,15 @@ namespace Assets.Scripts.Interactables
                 {
                     hitCount++;
                     wasHit = true;
-                    rb2d.AddForceAtPosition(forceOnCollision, collision.bounds.center, ForceMode2D.Impulse);
+
+                    //set force in the direction of the colliding object
+                    var forceDirection = new Vector2(Mathf.Sign(collision.attachedRigidbody.velocity.x) * forceOnCollision.x, forceOnCollision.y);
+
+                    //Apply collision force to object
+                    rb2d.AddForceAtPosition(forceDirection, collision.bounds.center, ForceMode2D.Impulse);
+
+                    //Apply collision force to incoming object
+                    collision.attachedRigidbody.AddForce(new Vector2(-(collision.attachedRigidbody.velocity.x * stopObjectPercentage), 0), ForceMode2D.Impulse);
                     sound?.Play();
                 }
             }
