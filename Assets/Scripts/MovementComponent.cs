@@ -22,9 +22,9 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            StateEnum state = player.GetState();
+            PlayerStates state = player.GetState();
 
-            if (state == StateEnum.Idle && walkWobble.IsWobble())
+            if (state == PlayerStates.Idle && walkWobble.IsWobble())
                 walkWobble.StopWobble();
         }
 

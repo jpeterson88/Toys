@@ -10,7 +10,7 @@ namespace Assets.Scripts
         private MovementComponent movementComponent;
         private GroundedDetector groundedDetector;
         private FacingDirection facingDirection;
-        private StateEnum currentState;
+        private PlayerStates currentState;
 
         private bool previouslyGrounded;
 
@@ -26,7 +26,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            currentState = groundedDetector.IsGrounded() ? StateEnum.Airborne : StateEnum.Idle;
+            currentState = groundedDetector.IsGrounded() ? PlayerStates.Airborne : PlayerStates.Idle;
         }
 
         private void Update()
@@ -34,11 +34,11 @@ namespace Assets.Scripts
             if (groundedDetector.IsGrounded() && !previouslyGrounded)
             {
                 OnLand?.Invoke();
-                currentState = StateEnum.Idle;
+                currentState = PlayerStates.Idle;
             }
             else if (!groundedDetector.IsGrounded() && previouslyGrounded)
             {
-                currentState = StateEnum.Airborne;
+                currentState = PlayerStates.Airborne;
             }
 
             previouslyGrounded = groundedDetector.IsGrounded();
@@ -46,34 +46,34 @@ namespace Assets.Scripts
 
         private void FixedUpdate()
         {
-            if (groundedDetector.IsGrounded() && currentState != StateEnum.Jump)
+            if (groundedDetector.IsGrounded() && currentState != PlayerStates.Jump)
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    currentState = StateEnum.Jump;
+                    currentState = PlayerStates.Jump;
                     jumpComponent.InitiateJump();
                 }
                 else if (Input.GetKey(KeyCode.D))
                 {
-                    currentState = StateEnum.Walk;
+                    currentState = PlayerStates.Walk;
                     facingDirection.SetFacingDirection(Vector2.right);
                     movementComponent.Move(Vector2.right);
                 }
                 else if (Input.GetKey(KeyCode.A))
                 {
-                    currentState = StateEnum.Walk;
+                    currentState = PlayerStates.Walk;
                     facingDirection.SetFacingDirection(Vector2.left);
                     movementComponent.Move(Vector2.left);
                 }
                 else
                 {
-                    currentState = StateEnum.Idle;
+                    currentState = PlayerStates.Idle;
                 }
             }
         }
 
-        public void SetState(StateEnum state) => currentState = state;
+        public void SetState(PlayerStates state) => currentState = state;
 
-        public StateEnum GetState() => currentState;
+        public PlayerStates GetState() => currentState;
     }
 }

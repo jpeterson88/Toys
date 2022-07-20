@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.State
 {
-    public enum StateEnum
+    public enum PlayerStates
     {
         Idle,
         Walk,
