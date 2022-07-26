@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.State.StateHandlers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace Assets.Scripts.State
 
         private StateHandlerBase currentStateHandler;
         private StateHandlerBase[] stateHandlers;
-        private int[] convertedStates;
+        private List<int> convertedStates;
 
         private void Awake()
         {
@@ -38,7 +39,10 @@ namespace Assets.Scripts.State
             if (stateHandlers == null || !stateHandlers.Any())
                 Debug.LogError("Failed to get statehandlers.");
 
-            convertedStates = (int[])Enum.GetValues(typeof(T));
+            convertedStates = new List<int>();
+
+            foreach (T i in allowedRepeatStates)
+                convertedStates.Add(Convert.ToInt32(i));
         }
 
         private void FixedUpdate()

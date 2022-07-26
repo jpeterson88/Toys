@@ -13,7 +13,10 @@ namespace Assets.Scripts
 
         public void SetFacingDirection(Vector2 direction)
         {
-            currentDirection = direction;
+            if (direction.x > 0)
+                currentDirection = Vector2.right;
+            else if (direction.x < 0)
+                currentDirection = Vector2.left;
         }
     }
 }

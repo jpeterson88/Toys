@@ -2,10 +2,9 @@
 {
     public enum PlayerStates
     {
-        Idle,
-        Walk,
-        Run,
-        Jump,
-        Airborne
+        Idle = 0,
+        Walk = 1,
+        Jump = 2,
+        Airborne = 3
     }
 }

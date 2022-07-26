@@ -6,8 +6,7 @@ namespace Assets.Scripts.State.StateHandlers
 {
     internal class StateHandlerBase : MonoBehaviour
     {
-        [SerializeField] protected int[] canHandleStates;
-        [SerializeField] private int idleState;
+        [SerializeField] protected PlayerStates[] canHandleStates;
 
         private StateMachine<PlayerStates> stateMachine;
 
@@ -22,7 +21,7 @@ namespace Assets.Scripts.State.StateHandlers
 
         internal bool CanHandle(int desiredState)
         {
-            return canHandleStates.Any(x => x == desiredState);
+            return canHandleStates.Any(x => (int)x == desiredState);
         }
 
         protected bool IsInCurrentHandlerState()
@@ -30,17 +29,14 @@ namespace Assets.Scripts.State.StateHandlers
             return canHandleStates.Any(x => x == GetCurrentState());
         }
 
-        protected void SetState(int desiredState)
+        protected void SetState(PlayerStates desiredState)
         {
-            stateMachine.SetState(desiredState);
+            stateMachine.SetState((int)desiredState);
         }
 
-        internal int GetCurrentState()
+        internal PlayerStates GetCurrentState()
         {
-            if (stateMachine == null)
-                return idleState;
-
-            return stateMachine.GetCurrentState();
+            return (PlayerStates)stateMachine.GetCurrentState();
         }
 
         internal virtual void OnEnter(int state)

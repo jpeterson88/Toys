@@ -36,5 +36,21 @@ namespace Assets.Scripts
             if (rb2d.velocity.magnitude < maxForce)
                 rb2d.AddForce(input * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
         }
+
+        //public bool isMoving()
+        //{
+        //    return playerInput.map.Movement != Vector2.zero;
+        //}
+
+        //public void Move()
+        //{
+        //    if (isMoving())
+        //    {
+        //        var direction = (rb2d.position - rb2d.position + playerInput.map.Movement).normalized;
+        //        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+        //        facingDirection.HandleFacingDirection(playerInput.map.Movement.x);
+        //    }
+        //}
     }
 }
