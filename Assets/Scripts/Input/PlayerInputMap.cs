@@ -9,11 +9,14 @@ namespace Assets.Scripts.Input
         Vector2 currentMoveVector;
 
         public Action JumpPressed { get; set; }
+        public Action Attack2Pressed { get; set; }
 
         public void SetMoveVector(CallbackContext callbackContext) => currentMoveVector = callbackContext.ReadValue<Vector2>();
 
         public Vector2 GetMoveVector() => currentMoveVector;
 
         public void OnJumpPressed() => JumpPressed?.Invoke();
+
+        public void OnAttack2Pressed() => Attack2Pressed?.Invoke();
     }
 }

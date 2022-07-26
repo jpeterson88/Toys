@@ -65,7 +65,7 @@ namespace Assets.Scripts.State
         public void SetState(int newState)
         {
             //If state is the same state and is not in repeatStates, return.
-            if (newState == currentState && !convertedStates.Any(x => x == newState))
+            if (currentStateHandler != null && newState == currentState && !convertedStates.Any(x => x == newState))
             {
                 return;
             }

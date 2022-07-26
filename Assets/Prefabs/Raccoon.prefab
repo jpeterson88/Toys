@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7559a5eb8e731d64daa13c91b94278a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine: {fileID: 1971605927491036936}
 --- !u!58 &2698566727371684092
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -161,6 +162,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6eafddf3-af8b-4a1f-8a7f-25456d642962
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7525695500503409670}
+        m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+        m_MethodName: OnAttack2Pressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 72d89cd0-0024-433a-948f-32ceb373199c
+    m_ActionName: Player/Attack2[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -347,6 +364,7 @@ MonoBehaviour:
   groundedDetector: {fileID: 2698566728864518208}
   moveSpeed: 40
   maxForce: 3.5
+  stateMachine: {fileID: 1971605927491036936}
 --- !u!114 &2698566727511705165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteGameObject: {fileID: 2698566727477033746}
-  scaleTo: {x: 1.1, y: 0.9}
+  scaleTo: {x: 1.75, y: 1.3}
   scaleDuration: 0.1
 --- !u!198 &2698566728325347223
 ParticleSystem:
@@ -5582,7 +5600,7 @@ MonoBehaviour:
   wobbleDuration: 0.2
   resetDuration: 0.2
   squashAdjustment: 0.2
-  wobbleAdjustment: 0.1
+  wobbleAdjustment: 0.05
   wobbleCount: 1
 --- !u!1 &4224206350727876587
 GameObject:
@@ -5632,7 +5650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedRepeatStates: 
-  setStateOnFirstFrameUpdate: 1
+  setStateOnFirstFrameUpdate: 0
   startingState: 0
   enableLogs: 1
 --- !u!1 &6471192251525316505

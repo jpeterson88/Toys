@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.State.StateHandlers
 {
-    class LandedStateHandler : StateHandlerBase
+    class LungeStateHandler : StateHandlerBase
     {
     }
 }

@@ -9,48 +9,36 @@ namespace Assets.Scripts
         [SerializeField] private GroundedDetector groundedDetector;
         [SerializeField] private float moveSpeed, maxForce;
 
+        [SerializeField] private PlayerStateMachine stateMachine;
+
         private WalkWobble walkWobble;
         private Rigidbody2D rb2d;
-        private Player player;
 
         private void Awake()
         {
             rb2d = GetComponentInParent<Rigidbody2D>();
             walkWobble = GetComponent<WalkWobble>();
-            player = GetComponentInParent<Player>();
         }
 
+        //TODO: Remove and move to animation stuffs
         private void Update()
         {
-            PlayerStates state = player.GetState();
+            var state = stateMachine.GetCurrentState();
 
-            if (state == PlayerStates.Idle && walkWobble.IsWobble())
+            if ((PlayerStates)state == PlayerStates.Idle && walkWobble.IsWobbling())
                 walkWobble.StopWobble();
         }
 
         public void Move(Vector2 input)
         {
-            if (!walkWobble.IsWobble())
+            //TODO: Move to animation stuffs
+            if (!walkWobble.IsWobbling())
                 walkWobble.StartWobble();
+
+            Debug.Log($"Is wobbling ${walkWobble.IsWobbling()}");
 
             if (rb2d.velocity.magnitude < maxForce)
                 rb2d.AddForce(input * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
         }
-
-        //public bool isMoving()
-        //{
-        //    return playerInput.map.Movement != Vector2.zero;
-        //}
-
-        //public void Move()
-        //{
-        //    if (isMoving())
-        //    {
-        //        var direction = (rb2d.position - rb2d.position + playerInput.map.Movement).normalized;
-        //        rb2d.MovePosition(rb2d.position + direction * moveSpeed * Time.fixedDeltaTime);
-
-        //        facingDirection.HandleFacingDirection(playerInput.map.Movement.x);
-        //    }
-        //}
     }
 }

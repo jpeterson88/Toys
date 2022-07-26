@@ -8,5 +8,7 @@ namespace Assets.Scripts.Input
         Vector2 GetMoveVector();
 
         Action JumpPressed { get; set; }
+
+        Action Attack2Pressed { get; set; }
     }
 }
