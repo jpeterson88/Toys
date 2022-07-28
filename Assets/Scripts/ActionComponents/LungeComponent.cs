@@ -14,16 +14,15 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private AudioSource audio;
 
-        private bool hasStarted;
+        private bool hasStarted, isFinished, hasInitiated;
         private float startingDrag;
-        private bool isFinished;
 
         private void Awake() => startingDrag = rb2d.drag;
 
         public void InitiateLunge()
         {
+            hasInitiated = true;
             rb2d.velocity = Vector2.zero;
-            isFinished = false;
             rb2d.drag = linearDragIncrease;
             StartCoroutine(LungeDelay());
         }
@@ -41,7 +40,7 @@ namespace Assets.Scripts.ActionComponents
 
         private void FixedUpdate()
         {
-            if (!hasStarted && !isFinished && rb2d.velocity.magnitude > stopMagnitude)
+            if (!hasStarted && hasInitiated && rb2d.velocity.magnitude > stopMagnitude)
             {
                 hasStarted = true;
                 ps.Play();
@@ -50,17 +49,20 @@ namespace Assets.Scripts.ActionComponents
             else if (hasStarted && !isFinished && rb2d.velocity.magnitude < stopMagnitude)
             {
                 isFinished = true;
-                ps.Stop();
             }
         }
 
         public bool IsFinished() => isFinished;
 
+        public bool HasInitiated() => hasInitiated;
+
         public void Reset()
         {
             hasStarted = false;
-            isFinished = true;
+            isFinished = false;
+            hasInitiated = false;
             rb2d.drag = startingDrag;
+            ps.Stop();
         }
     }
 }

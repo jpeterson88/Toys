@@ -5882,6 +5882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canHandleStates: 05000000
   lungeComponent: {fileID: 3889762339986827352}
+  groundedDetector: {fileID: 2698566728864518208}
 --- !u!1 &6013941380217053896
 GameObject:
   m_ObjectHideFlags: 0
