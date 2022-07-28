@@ -7,6 +7,7 @@ namespace Assets.Scripts.SpriteAnims
         [SerializeField] private GameObject spriteGameObject;
         [SerializeField] private Vector2 scaleTo;
         [SerializeField] private float resetTime, loopTime;
+
         private Vector2 startingScale;
         private bool isWobbling;
 
@@ -17,7 +18,6 @@ namespace Assets.Scripts.SpriteAnims
 
         public void StartWobble()
         {
-            Debug.Log("Start Wobble");
             isWobbling = true;
             LeanTween.scale(spriteGameObject, scaleTo, loopTime)
                 .setLoopPingPong();
@@ -25,7 +25,6 @@ namespace Assets.Scripts.SpriteAnims
 
         public void StopWobble()
         {
-            Debug.Log("Stop Wobble");
             //Cancel and scale back to starting
             LeanTween.cancel(spriteGameObject);
             LeanTween.scale(spriteGameObject, startingScale, resetTime);

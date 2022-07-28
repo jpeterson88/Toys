@@ -35,8 +35,6 @@ namespace Assets.Scripts
             if (!walkWobble.IsWobbling())
                 walkWobble.StartWobble();
 
-            Debug.Log($"Is wobbling ${walkWobble.IsWobbling()}");
-
             if (rb2d.velocity.magnitude < maxForce)
                 rb2d.AddForce(input * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
         }
