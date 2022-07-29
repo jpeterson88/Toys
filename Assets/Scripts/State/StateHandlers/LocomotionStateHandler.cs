@@ -24,13 +24,13 @@ namespace Assets.Scripts.State.StateHandlers
 
         private void HandleAttack2Pressed()
         {
-            if (groundedDetector.IsGrounded())
+            if (groundedDetector.IsGrounded() && IsInCurrentHandlerState())
                 SetState(PlayerStates.Attack2);
         }
 
         private void HandleJumpPressed()
         {
-            if (groundedDetector.IsGrounded())
+            if (groundedDetector.IsGrounded() && IsInCurrentHandlerState())
                 SetState(PlayerStates.Jump);
         }
 

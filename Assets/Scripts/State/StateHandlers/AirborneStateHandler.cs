@@ -9,7 +9,7 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
-            if (groundedDetector.IsGrounded())
+            if (groundedDetector.IsGrounded() && IsInCurrentHandlerState())
                 SetState(PlayerStates.Idle);
         }
     }

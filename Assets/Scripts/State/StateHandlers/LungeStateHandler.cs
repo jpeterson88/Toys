@@ -19,17 +19,22 @@ namespace Assets.Scripts.State.StateHandlers
             base.OnFixedUpdate();
 
             //Check if lunge finished
-            if (lungeComponent.HasInitiated() && lungeComponent.IsFinished())
+            if (lungeComponent.HasInitiated() && lungeComponent.IsFinished() && IsInCurrentHandlerState())
             {
                 lungeComponent.Reset();
                 SetState(PlayerStates.Idle);
             }
             //Check if we're airborne
-            else if (!groundedDetector.IsGrounded())
+            else if (!groundedDetector.IsGrounded() && IsInCurrentHandlerState())
             {
-                lungeComponent.Reset();
                 SetState(PlayerStates.Airborne);
             }
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            lungeComponent.Reset();
         }
     }
 }
