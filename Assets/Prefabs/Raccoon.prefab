@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5763585999127860999}
   - component: {fileID: 3889762339986827352}
+  - component: {fileID: 8127910883652522998}
   m_Layer: 7
   m_Name: Lunge Component
   m_TagString: Untagged
@@ -53,6 +54,24 @@ MonoBehaviour:
   linearDragIncrease: 8
   ps: {fileID: 8815957917694302096}
   audio: {fileID: 7560831662825328321}
+  lungeWobble: {fileID: 8127910883652522998}
+--- !u!114 &8127910883652522998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993257197175815686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ab717fe92a4774d93f359ccaed6f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleTo: {x: 2, y: 1.2}
+  spriteGameObject: {fileID: 2698566727477033746}
+  startDuration: 0.5
+  lungeDuration: 0.2
+  resetDuration: 0.075
 --- !u!1 &2698566727371684086
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +374,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738392445
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayer: 2
+  m_SortingOrder: 60
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
   m_Color: {r: 0.2264151, g: 0.2253471, b: 0.2253471, a: 1}
@@ -415,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDetector: {fileID: 2698566728864518208}
-  moveSpeed: 40
+  moveSpeed: 60
   maxForce: 3.5
   stateMachine: {fileID: 1971605927491036936}
 --- !u!114 &2698566727511705165
@@ -433,7 +452,7 @@ MonoBehaviour:
   spriteGameObject: {fileID: 2698566727477033746}
   scaleTo: {x: 1.7, y: 1.35}
   resetTime: 0.1
-  loopTime: 0.4
+  loopTime: 0.35
 --- !u!1 &2698566727642255670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,8 +5400,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738392445
-  m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingLayer: 2
+  m_SortingOrder: 32767
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -10665,7 +10684,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738392445
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_RenderMode: 0
   m_MeshDistribution: 0

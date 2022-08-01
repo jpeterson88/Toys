@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.SpriteAnims;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.ActionComponents
@@ -13,6 +14,7 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private float linearDragIncrease;
         [SerializeField] private ParticleSystem ps;
         [SerializeField] private AudioSource audio;
+        [SerializeField] private LungeWobble lungeWobble;
 
         private bool hasStarted, isFinished, hasInitiated;
         private float startingDrag;
@@ -24,6 +26,7 @@ namespace Assets.Scripts.ActionComponents
             hasInitiated = true;
             rb2d.velocity = Vector2.zero;
             rb2d.drag = linearDragIncrease;
+            lungeWobble.StartSquash();
             StartCoroutine(LungeDelay());
         }
 
@@ -36,6 +39,7 @@ namespace Assets.Scripts.ActionComponents
             float psDirection = direction.x > 0 ? 180 : 0;
             ps.transform.eulerAngles = new Vector3(0, psDirection, 0);
             rb2d.AddForce(new Vector2(lungeForceDirection, 0), ForceMode2D.Impulse);
+            lungeWobble.LungeForward();
         }
 
         private void FixedUpdate()
@@ -63,6 +67,7 @@ namespace Assets.Scripts.ActionComponents
             hasInitiated = false;
             rb2d.drag = startingDrag;
             ps.Stop();
+            lungeWobble.Reset();
         }
     }
 }
