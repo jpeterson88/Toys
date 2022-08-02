@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Input;
+using Assets.Scripts.Utility;
 using System.Linq;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Assets.Scripts.State.StateHandlers
     {
         [SerializeField] private MovementComponent movementComponent;
         [SerializeField] private GroundedDetector groundedDetector;
+        [SerializeField] private ClimbDetection climbDetector;
         [SerializeField] private FacingDirection facingDirection;
 
         private IInput input;
@@ -48,6 +50,10 @@ namespace Assets.Scripts.State.StateHandlers
             if (!groundedDetector.IsGrounded() && canHandleStates.Contains(GetCurrentState()))
             {
                 SetState(PlayerStates.Airborne);
+            }
+            else if (climbDetector.CanClimb() && input.GetMoveVector().y != 0)
+            {
+                SetState(PlayerStates.Climb);
             }
             else
             {

@@ -7,6 +7,7 @@
         Jump = 2,
         Airborne = 3,
         Attack1 = 4,
-        Attack2 = 5
+        Attack2 = 5,
+        Climb
     }
 }

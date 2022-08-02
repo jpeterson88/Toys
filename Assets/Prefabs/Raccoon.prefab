@@ -5836,6 +5836,7 @@ Transform:
   - {fileID: 3910058602642175221}
   - {fileID: 3049466208776595433}
   - {fileID: 8784874241293747988}
+  - {fileID: 6054141997873947694}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5902,6 +5903,53 @@ MonoBehaviour:
   canHandleStates: 05000000
   lungeComponent: {fileID: 3889762339986827352}
   groundedDetector: {fileID: 2698566728864518208}
+--- !u!1 &5332853093865745481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6054141997873947694}
+  - component: {fileID: 6595827484958477130}
+  m_Layer: 7
+  m_Name: Climb Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6054141997873947694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5332853093865745481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7579826069974007284}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6595827484958477130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5332853093865745481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33abc8b9177a7f0489e528c9eefc6ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHandleStates: 06000000
+  climbComponent: {fileID: 9077012490176664621}
+  climbDetection: {fileID: 7591094051700924727}
 --- !u!1 &6013941380217053896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10746,6 +10794,7 @@ Transform:
   m_Children:
   - {fileID: 2698566728864518215}
   - {fileID: 2698566727650954396}
+  - {fileID: 8009167952422143904}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10796,6 +10845,7 @@ MonoBehaviour:
   canHandleStates: 0000000001000000
   movementComponent: {fileID: 2698566727511705166}
   groundedDetector: {fileID: 2698566728864518208}
+  climbDetector: {fileID: 7591094051700924727}
   facingDirection: {fileID: 2698566727650954397}
 --- !u!1 &8144216118688423177
 GameObject:
@@ -10844,6 +10894,53 @@ MonoBehaviour:
   canHandleStates: 02000000
   groundedDetector: {fileID: 2698566728864518208}
   jumpComponent: {fileID: 2698566728871492683}
+--- !u!1 &8167158938846499701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5572821705520005713}
+  - component: {fileID: 9077012490176664621}
+  m_Layer: 7
+  m_Name: Climb Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5572821705520005713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167158938846499701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299425223213442992}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9077012490176664621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167158938846499701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df21e051f1d8d64bad7b46c795e38d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkWobble: {fileID: 2698566727511705165}
+  rb2d: {fileID: 2698566727371684080}
+  climbSpeed: 150
 --- !u!1 &8243381207046603012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10890,6 +10987,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canHandleStates: 03000000
   groundedDetector: {fileID: 2698566728864518208}
+  climbDetector: {fileID: 7591094051700924727}
+--- !u!1 &8358099666703915225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8009167952422143904}
+  - component: {fileID: 7591094051700924727}
+  - component: {fileID: 7439745682703509313}
+  m_Layer: 11
+  m_Name: Climb Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8009167952422143904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358099666703915225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3989240885382024920}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7591094051700924727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358099666703915225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d78497a462d59449da42e42551703d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &7439745682703509313
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358099666703915225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.74
 --- !u!1 &8847695648509390871
 GameObject:
   m_ObjectHideFlags: 0
@@ -10922,6 +11081,7 @@ Transform:
   - {fileID: 2698566727511705164}
   - {fileID: 2698566728325347211}
   - {fileID: 5763585999127860999}
+  - {fileID: 5572821705520005713}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
