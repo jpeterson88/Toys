@@ -32,11 +32,14 @@ namespace Assets.Scripts
         public void Move(Vector2 input)
         {
             //TODO: Move to animation stuffs
-            if (!walkWobble.IsWobbling())
+
+            if (Mathf.Abs(input.x) > 0 && !walkWobble.IsWobbling())
                 walkWobble.StartWobble();
+            else if (input.x == 0 && walkWobble.IsWobbling())
+                walkWobble.StopWobble();
 
             if (rb2d.velocity.magnitude < maxForce)
-                rb2d.AddForce(input * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
+                rb2d.AddForce(new Vector2(input.x, 0) * Time.deltaTime * moveSpeed, ForceMode2D.Impulse);
         }
     }
 }
