@@ -8,14 +8,18 @@ namespace Assets.Scripts.Utility
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Enter can climb");
-            canClimb = collision.CompareTag("Climbable");
+            if (collision.CompareTag("Climbable"))
+                canClimb = true;
+
+            Debug.Log($"Enter: {canClimb}");
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            Debug.Log("Exit can climb");
-            canClimb = false;
+            if (collision.CompareTag("Climbable"))
+                canClimb = false;
+
+            Debug.Log($"Exit: {canClimb}");
         }
 
         public bool CanClimb() => canClimb;

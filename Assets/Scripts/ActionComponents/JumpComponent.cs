@@ -9,7 +9,7 @@ namespace Assets.Scripts
     {
         [SerializeField] private FacingDirection facingDirection;
         [SerializeField] private Vector2 force;
-        [SerializeField] private CircleCollider2D collider2D;
+        [SerializeField] private CircleCollider2D environmentInteractor;
 
         private JumpSquashWobble jumpSquashWobble;
         private Rigidbody2D rb2d;
@@ -18,19 +18,12 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            //TODO: This should't be a direct binding;
-            Player.OnLand += HandleLand;
             rb2d = GetComponentInParent<Rigidbody2D>();
             jumpSquashWobble = GetComponent<JumpSquashWobble>();
 
             input = transform.root.GetComponent<IInput>();
             if (input == null)
                 Debug.LogError("failed to find input for Locomotion handler");
-        }
-
-        private void HandleLand()
-        {
-            collider2D.enabled = false;
         }
 
         public void InitiateJump()
@@ -50,7 +43,7 @@ namespace Assets.Scripts
         private void Launch(Vector2 moveVector)
         {
             // Enable jump collider
-            collider2D.enabled = true;
+            environmentInteractor.enabled = true;
 
             if (Mathf.Abs(moveVector.x) > 0)
             {

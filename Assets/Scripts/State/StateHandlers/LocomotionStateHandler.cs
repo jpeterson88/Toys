@@ -47,12 +47,13 @@ namespace Assets.Scripts.State.StateHandlers
             base.OnFixedUpdate();
 
             //We're in grounded state but not touching ground
-            if (!groundedDetector.IsGrounded() && canHandleStates.Contains(GetCurrentState()))
+            if (!groundedDetector.IsGrounded() && IsInCurrentHandlerState())
             {
                 SetState(PlayerStates.Airborne);
             }
-            else if (climbDetector.CanClimb() && input.GetMoveVector().y != 0)
+            else if (climbDetector.CanClimb() && Mathf.Abs(input.GetMoveVector().y) > .5f && IsInCurrentHandlerState())
             {
+                Debug.Log(input.GetMoveVector().y);
                 SetState(PlayerStates.Climb);
             }
             else

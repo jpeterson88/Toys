@@ -9,10 +9,6 @@ namespace Assets.Scripts
         [SerializeField] private PlayerStateMachine stateMachine;
         private GroundedDetector groundedDetector;
 
-        private bool previouslyGrounded;
-
-        public static Action OnLand = delegate { };
-
         private void Awake()
         {
             groundedDetector = GetComponentInChildren<GroundedDetector>();
@@ -23,16 +19,6 @@ namespace Assets.Scripts
             var startingState = groundedDetector.IsGrounded() ? PlayerStates.Airborne : PlayerStates.Idle;
 
             stateMachine.SetState((int)startingState);
-        }
-
-        private void Update()
-        {
-            if (groundedDetector.IsGrounded() && !previouslyGrounded)
-            {
-                OnLand?.Invoke();
-            }
-
-            previouslyGrounded = groundedDetector.IsGrounded();
         }
     }
 }

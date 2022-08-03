@@ -16,7 +16,11 @@ namespace Assets.Scripts.ActionComponents
 
         public void Climb(Vector2 climbVector)
         {
-            rb2d.velocity = new Vector2(0, climbVector.y * climbSpeed * Time.fixedDeltaTime);
+            float inputSpeedY = Mathf.Abs(climbVector.y) > 0 ? 1 : 0;
+            float inputSpeedX = Mathf.Abs(climbVector.x) > 0 ? 1 : 0;
+
+            rb2d.velocity = new Vector2(inputSpeedX * Mathf.Sign(climbVector.x) * climbSpeed * Time.fixedDeltaTime,
+                inputSpeedY * Mathf.Sign(climbVector.y) * climbSpeed * Time.fixedDeltaTime);
 
             if (Mathf.Abs(climbVector.y) > 0 && !walkWobble.IsWobbling())
                 walkWobble.StartWobble();
