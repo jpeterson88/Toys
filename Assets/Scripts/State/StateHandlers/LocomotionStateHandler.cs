@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Input;
+﻿using Assets.Scripts.ActionComponents;
+using Assets.Scripts.Input;
 using Assets.Scripts.Utility;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -8,6 +8,8 @@ namespace Assets.Scripts.State.StateHandlers
     class LocomotionStateHandler : StateHandlerBase
     {
         [SerializeField] private MovementComponent movementComponent;
+        [SerializeField] private MovementComponentv2 movementComponentv2;
+        [SerializeField] private SlopeCheck slopeCheck;
         [SerializeField] private GroundedDetector groundedDetector;
         [SerializeField] private ClimbDetection climbDetector;
         [SerializeField] private FacingDirection facingDirection;
@@ -60,11 +62,14 @@ namespace Assets.Scripts.State.StateHandlers
             {
                 Vector2 moveVector = input.GetMoveVector();
 
+                slopeCheck.Detect(moveVector);
+
                 if (moveVector != Vector2.zero)
                 {
                     SetState(PlayerStates.Walk);
                     facingDirection.SetFacingDirection(moveVector);
-                    movementComponent.Move(moveVector);
+                    movementComponentv2.ApplyMovement(moveVector);
+                    //movementComponent.Move(moveVector);
                 }
                 else
                 {
