@@ -646,7 +646,13 @@ MonoBehaviour:
   spriteGameObject: {fileID: 2698566727477033746}
   scaleTo: {x: 1.75, y: 1.3}
   scaleDuration: 0.1
-  audioSource: {fileID: 2698566728333423075}
+  normalLand: {fileID: 2698566728333423075}
+  hardLand: {fileID: 2698566728333423075}
+  heavyVelocityThreshold: 11
+  minimumLandThreshold: 5.5
+  normalShakeForce: 1
+  heavyShakeForce: 2
+  camShakeEvent: {fileID: 11400000, guid: 61ee02d074e3f7246991bdbcd67da153, type: 2}
 --- !u!198 &2698566728325347223
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -11114,6 +11120,7 @@ MonoBehaviour:
   climbDetector: {fileID: 7591094051700924727}
   landComponent: {fileID: 2698566728325347221}
   environmentInteractor: {fileID: 2698566727443750630}
+  rb2d: {fileID: 2698566727371684080}
 --- !u!1 &8358099666703915225
 GameObject:
   m_ObjectHideFlags: 0

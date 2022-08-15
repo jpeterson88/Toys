@@ -10,10 +10,12 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private ClimbDetection climbDetector;
         [SerializeField] private LandComponent landComponent;
         [SerializeField] private CircleCollider2D environmentInteractor;
+        [SerializeField] private Rigidbody2D rb2d;
 
         //TODO: This should likely be in a landed component and have a landed state handler
-
         private IInput input;
+
+        private float currentFallVelocity;
 
         private void Awake()
         {
@@ -30,8 +32,8 @@ namespace Assets.Scripts.State.StateHandlers
             {
                 if (groundedDetector.IsGrounded())
                 {
+                    landComponent.HandleLand(currentFallVelocity);
                     SetState(PlayerStates.Idle);
-                    landComponent.HandleLand();
                 }
                 else if (climbDetector.CanClimb() &&
                     Mathf.Abs(input.GetMoveVector().y) > .5f &&
@@ -39,12 +41,17 @@ namespace Assets.Scripts.State.StateHandlers
                 {
                     SetState(PlayerStates.Climb);
                 }
+                else if (Mathf.Abs(rb2d.velocity.y) > 0)
+                {
+                    currentFallVelocity = rb2d.velocity.y;
+                }
             }
         }
 
         internal override void OnExit()
         {
             base.OnExit();
+            currentFallVelocity = 0f;
             environmentInteractor.enabled = false;
         }
     }
