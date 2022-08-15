@@ -345,8 +345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 7597275289398250607}
-  forceOnCollision: {x: 2, y: 0}
+  forceOnCollision: {x: 3, y: 0}
   rb2d: {fileID: 7597275289515662098}
+  collideWithTag: Player
   layerNumber: 11
   cooldownPerHit: 2
   allowedHitCount: 1

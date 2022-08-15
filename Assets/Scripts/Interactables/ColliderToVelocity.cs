@@ -8,6 +8,10 @@ namespace Assets.Scripts.Interactables
         [SerializeField] private AudioSource sound;
         [SerializeField] private Vector2 forceOnCollision;
         [SerializeField] private Rigidbody2D rb2d;
+
+        //Collides with all of null
+        [SerializeField] private string collideWithTag;
+
         [SerializeField] private int layerNumber;
         [SerializeField] private float cooldownPerHit;
         [SerializeField] private int allowedHitCount;
@@ -15,16 +19,14 @@ namespace Assets.Scripts.Interactables
 
         private float currentTimer;
         private bool wasHit;
-        private int hitCount;
+        private int currentHitCount;
 
         private void Update()
         {
-            if (hitCount == 0 || allowedHitCount < hitCount)
+            if (currentHitCount == 0 || allowedHitCount < currentHitCount)
             {
                 if (wasHit)
-                {
                     currentTimer += Time.deltaTime;
-                }
 
                 if (currentTimer >= cooldownPerHit)
                     wasHit = false;
@@ -33,11 +35,12 @@ namespace Assets.Scripts.Interactables
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (hitCount == 0 || allowedHitCount < hitCount)
+            if (allowedHitCount > currentHitCount && (collision.CompareTag(collideWithTag) || string.IsNullOrWhiteSpace(collideWithTag)))
             {
+                Debug.Log($"Collided with Tag: {collision.tag}. Compared with: {collideWithTag}");
                 if (collision.gameObject.layer == layerNumber)
                 {
-                    hitCount++;
+                    currentHitCount++;
                     wasHit = true;
 
                     //set force in the direction of the colliding object
@@ -53,6 +56,6 @@ namespace Assets.Scripts.Interactables
             }
         }
 
-        public void ResetHitCount() => hitCount = 0;
+        public void ResetHitCount() => currentHitCount = 0;
     }
 }
