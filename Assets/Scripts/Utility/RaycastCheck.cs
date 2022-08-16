@@ -2,17 +2,18 @@
 
 namespace Assets.Scripts.Utility
 {
-    class BoxCaster : MonoBehaviour
+    class RaycastCheck : MonoBehaviour
     {
         [SerializeField] private float distance;
         [SerializeField] private LayerMask layer;
         [SerializeField] private Vector2 direction;
-        private bool isHit;
-        RaycastHit2D hit;
 
-        private void Update()
+        private bool isHit;
+        private RaycastHit2D hit;
+
+        public void Check()
         {
-            hit = Physics2D.BoxCast(transform.position, transform.lossyScale / 1.5f, 0f, direction, distance, layer);
+            hit = Physics2D.Raycast(transform.position, direction, distance, layer);
 
             isHit = hit.transform != null;
         }
@@ -25,7 +26,6 @@ namespace Assets.Scripts.Utility
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawRay(transform.position, direction * hit.distance);
-                Gizmos.DrawWireCube(transform.position + (Vector3)direction * hit.distance, transform.lossyScale);
             }
             else
             {

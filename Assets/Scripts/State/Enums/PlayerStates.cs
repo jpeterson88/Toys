@@ -8,6 +8,7 @@
         Airborne = 3,
         Attack1 = 4,
         Attack2 = 5,
-        Climb
+        Climb = 6,
+        Ledge = 7
     }
 }

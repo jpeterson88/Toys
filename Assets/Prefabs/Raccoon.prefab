@@ -126,6 +126,53 @@ MonoBehaviour:
   startDuration: 0.5
   lungeDuration: 0.2
   resetDuration: 0.075
+--- !u!1 &2676150174584504522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2615820294899351293}
+  - component: {fileID: 3877606071692636295}
+  m_Layer: 7
+  m_Name: Ledge Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2615820294899351293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676150174584504522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7579826069974007284}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3877606071692636295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676150174584504522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260a54abf00550941a2662123dade9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHandleStates: 07000000
+  ledgeComponent: {fileID: 3670672869256149631}
+  ledgePullupDelay: 0.4
 --- !u!1 &2698566727371684086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5732,8 @@ MonoBehaviour:
   distance: 0.33
   layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
+  direction: {x: 0, y: -1}
 --- !u!1 &2698566728871492681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5747,7 +5795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteGameObject: {fileID: 2698566727477033746}
-  squashDuration: 0.1
+  squashDuration: 0.15
   wobbleDuration: 0.15
   resetDuration: 0.2
   squashAdjustment: 0.2
@@ -5881,6 +5929,55 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4003601734059675016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2217616004313527283}
+  - component: {fileID: 3909126141522032892}
+  m_Layer: 7
+  m_Name: Ledge Ground Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2217616004313527283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003601734059675016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3989240885382024920}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3909126141522032892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003601734059675016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73754f39d809b90478c3b07ac16f5f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.05
+  layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  direction: {x: 0, y: -1}
 --- !u!1 &4224206350727876587
 GameObject:
   m_ObjectHideFlags: 0
@@ -5915,6 +6012,7 @@ Transform:
   - {fileID: 3049466208776595433}
   - {fileID: 8784874241293747988}
   - {fileID: 6054141997873947694}
+  - {fileID: 2615820294899351293}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10923,9 +11021,60 @@ Transform:
   - {fileID: 2698566727650954396}
   - {fileID: 8009167952422143904}
   - {fileID: 3416207124983039025}
+  - {fileID: 8731087551247855174}
+  - {fileID: 2217616004313527283}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7656715835710624005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8731087551247855174}
+  - component: {fileID: 8614878269204256494}
+  m_Layer: 7
+  m_Name: Ledge Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8731087551247855174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656715835710624005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3989240885382024920}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8614878269204256494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656715835710624005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af8dddeb7c5a4c479b8a931d93dae32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.25
+  layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  direction: {x: 0, y: 1}
 --- !u!1 &7876688404113715441
 GameObject:
   m_ObjectHideFlags: 0
@@ -11122,6 +11271,7 @@ MonoBehaviour:
   landComponent: {fileID: 2698566728325347221}
   environmentInteractor: {fileID: 2698566727443750630}
   rb2d: {fileID: 2698566727371684080}
+  ledgeDetector: {fileID: 8614878269204256494}
 --- !u!1 &8358099666703915225
 GameObject:
   m_ObjectHideFlags: 0
@@ -11217,6 +11367,54 @@ Transform:
   - {fileID: 5763585999127860999}
   - {fileID: 5572821705520005713}
   - {fileID: 319065404010382123}
+  - {fileID: 3949406513801496542}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8931936700987172576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3949406513801496542}
+  - component: {fileID: 3670672869256149631}
+  m_Layer: 7
+  m_Name: Ledge Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3949406513801496542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931936700987172576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299425223213442992}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3670672869256149631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931936700987172576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b832b3ce306c6b40bd5286aebefe246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 2698566727371684080}
+  pullupSpeed: {x: 0, y: 3}
+  groundCheck: {fileID: 3909126141522032892}

@@ -11,6 +11,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private LandComponent landComponent;
         [SerializeField] private CircleCollider2D environmentInteractor;
         [SerializeField] private Rigidbody2D rb2d;
+        [SerializeField] private BoxCaster ledgeDetector;
 
         //TODO: This should likely be in a landed component and have a landed state handler
         private IInput input;
@@ -36,10 +37,13 @@ namespace Assets.Scripts.State.StateHandlers
                     SetState(PlayerStates.Idle);
                 }
                 else if (climbDetector.CanClimb() &&
-                    Mathf.Abs(input.GetMoveVector().y) > .5f &&
-                    IsInCurrentHandlerState())
+                    Mathf.Abs(input.GetMoveVector().y) > .5f)
                 {
                     SetState(PlayerStates.Climb);
+                }
+                else if (ledgeDetector.IsHit() && Mathf.Abs(input.GetMoveVector().y) > .5f)
+                {
+                    SetState(PlayerStates.Ledge);
                 }
                 else if (Mathf.Abs(rb2d.velocity.y) > 0)
                 {

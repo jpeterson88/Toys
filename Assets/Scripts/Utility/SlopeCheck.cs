@@ -20,16 +20,16 @@ namespace Assets.Scripts.Utility
         private bool isOnSlope;
         private bool canWalkOnSlope;
         private Vector2 slopeNormalPerp;
-        private Vector2 capsuleColliderSize;
+        private Vector2 colliderSize;
 
         private void Start()
         {
-            capsuleColliderSize = cc.bounds.size;
+            colliderSize = cc.bounds.size;
         }
 
         public void Detect(Vector2 moveVector)
         {
-            Vector2 checkPos = transform.position - (Vector3)(new Vector2(0.0f, capsuleColliderSize.y / 2));
+            Vector2 checkPos = transform.position - (Vector3)(new Vector2(0.0f, colliderSize.y / 2));
 
             SlopeCheckHorizontal(checkPos);
             SlopeCheckVertical(checkPos, moveVector);
