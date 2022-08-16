@@ -32,8 +32,13 @@ namespace Assets.Scripts.State.StateHandlers
 
             if (IsInCurrentHandlerState() && currentDurationOnEnter >= ledgePullupDelay)
             {
-                if (!ledgeComponent.IsPullingUp() && Mathf.Abs(input.GetMoveVector().y) > .5f)
-                    ledgeComponent.BeginPullup();
+                if (!ledgeComponent.IsPullingUp())
+                {
+                    if (input.GetMoveVector().y > .5f)
+                        ledgeComponent.BeginPullup();
+                    else if (input.GetMoveVector().y < 0)
+                        SetState(PlayerStates.Airborne);
+                }
                 else if (ledgeComponent.IsPullingUp() && ledgeComponent.IsFinished())
                     SetState(PlayerStates.Idle);
             }

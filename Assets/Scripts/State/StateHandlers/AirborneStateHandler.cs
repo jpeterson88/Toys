@@ -41,7 +41,7 @@ namespace Assets.Scripts.State.StateHandlers
                 {
                     SetState(PlayerStates.Climb);
                 }
-                else if (ledgeDetector.IsHit() && Mathf.Abs(input.GetMoveVector().y) > .5f)
+                else if (ledgeDetector.IsHit() && input.GetMoveVector().y > .5f)
                 {
                     SetState(PlayerStates.Ledge);
                 }
