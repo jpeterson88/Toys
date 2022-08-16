@@ -651,7 +651,7 @@ MonoBehaviour:
   heavyVelocityThreshold: 11
   minimumLandThreshold: 5.5
   normalShakeForce: 1
-  heavyShakeForce: 2
+  heavyShakeForce: 3
   camShakeEvent: {fileID: 11400000, guid: 61ee02d074e3f7246991bdbcd67da153, type: 2}
 --- !u!198 &2698566728325347223
 ParticleSystem:
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {fileID: 2698566727650954397}
-  force: {x: 14, y: 7}
+  force: {x: 11, y: 7.5}
   environmentInteractor: {fileID: 2698566727443750630}
 --- !u!114 &2698566728871492692
 MonoBehaviour:
@@ -5747,8 +5747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteGameObject: {fileID: 2698566727477033746}
-  squashDuration: 0.4
-  wobbleDuration: 0.2
+  squashDuration: 0.1
+  wobbleDuration: 0.15
   resetDuration: 0.2
   squashAdjustment: 0.2
   wobbleAdjustment: 0.05
@@ -11024,6 +11024,7 @@ MonoBehaviour:
   canHandleStates: 02000000
   groundedDetector: {fileID: 2698566728864518208}
   jumpComponent: {fileID: 2698566728871492683}
+  slopeCheck: {fileID: 7554094786071827838}
 --- !u!1 &8167158938846499701
 GameObject:
   m_ObjectHideFlags: 0

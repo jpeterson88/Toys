@@ -15,6 +15,7 @@ namespace Assets.Scripts
         private Rigidbody2D rb2d;
 
         private IInput input;
+        private bool hasLaunched;
 
         private void Awake()
         {
@@ -28,6 +29,7 @@ namespace Assets.Scripts
 
         public void InitiateJump()
         {
+            hasLaunched = false;
             jumpSquashWobble.InitializeSquash();
 
             StartCoroutine(LaunchCountdown());
@@ -44,6 +46,7 @@ namespace Assets.Scripts
         {
             // Enable jump collider
             environmentInteractor.enabled = true;
+            hasLaunched = true;
 
             if (Mathf.Abs(moveVector.x) > 0)
             {
@@ -56,5 +59,7 @@ namespace Assets.Scripts
                 rb2d.AddForce(new Vector2(0, force.y), ForceMode2D.Impulse);
             }
         }
+
+        public bool HasLaunched() => hasLaunched;
     }
 }

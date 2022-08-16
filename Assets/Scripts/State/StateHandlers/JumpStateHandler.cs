@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Utility;
+using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
 {
@@ -6,10 +7,11 @@ namespace Assets.Scripts.State.StateHandlers
     {
         [SerializeField] private GroundedDetector groundedDetector;
         [SerializeField] private JumpComponent jumpComponent;
+        [SerializeField] private SlopeCheck slopeCheck;
+        private float launchFrames;
 
         internal override void OnEnter(int state)
         {
-            Debug.Log("Enter Jump state");
             base.OnEnter(state);
             jumpComponent.InitiateJump();
         }
@@ -18,8 +20,14 @@ namespace Assets.Scripts.State.StateHandlers
         {
             base.OnFixedUpdate();
 
+            if (jumpComponent.HasLaunched())
+                launchFrames++;
+
             if (!groundedDetector.IsGrounded())
                 SetState(PlayerStates.Airborne);
+            //If we jump on slope and we don't take off
+            else if (jumpComponent.HasLaunched() && launchFrames > 15 && slopeCheck.IsOnSlope())
+                SetState(PlayerStates.Idle);
         }
     }
 }

@@ -37,7 +37,6 @@ namespace Assets.Scripts.Interactables
         {
             if (allowedHitCount > currentHitCount && (collision.CompareTag(collideWithTag) || string.IsNullOrWhiteSpace(collideWithTag)))
             {
-                Debug.Log($"Collided with Tag: {collision.tag}. Compared with: {collideWithTag}");
                 if (collision.gameObject.layer == layerNumber)
                 {
                     currentHitCount++;
