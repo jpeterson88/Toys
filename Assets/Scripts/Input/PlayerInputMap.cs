@@ -11,6 +11,10 @@ namespace Assets.Scripts.Input
         public Action JumpPressed { get; set; }
         public Action Attack2Pressed { get; set; }
 
+        public Action TriggerLPressed { get; set; }
+
+        public Action TriggerRPressed { get; set; }
+
         public void SetMoveVector(CallbackContext callbackContext) => currentMoveVector = callbackContext.ReadValue<Vector2>();
 
         public Vector2 GetMoveVector() => currentMoveVector;
@@ -18,5 +22,9 @@ namespace Assets.Scripts.Input
         public void OnJumpPressed() => JumpPressed?.Invoke();
 
         public void OnAttack2Pressed() => Attack2Pressed?.Invoke();
+
+        public void OnTriggerLPressed() => TriggerLPressed?.Invoke();
+
+        public void OnTriggerRPressed() => TriggerRPressed?.Invoke();
     }
 }

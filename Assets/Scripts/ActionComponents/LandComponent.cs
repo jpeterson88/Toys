@@ -47,7 +47,7 @@ namespace Assets.Scripts
         {
             if (landVelocity >= heavyVelocityThreshold)
             {
-                //TODO: 13f is just a random velocity. should make it changeable in editor
+                //TODO: 10f is just a random velocity. should make it changeable in editor
                 float force = landVelocity > 10f ? heavyShakeForce : normalShakeForce;
                 camShakeEvent.Invoke(force);
             }

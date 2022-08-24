@@ -10,5 +10,8 @@ namespace Assets.Scripts.Input
         Action JumpPressed { get; set; }
 
         Action Attack2Pressed { get; set; }
+
+        Action TriggerLPressed { get; set; }
+        Action TriggerRPressed { get; set; }
     }
 }
