@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Input;
-using System;
 using System.Collections;
 using UnityEngine;
 

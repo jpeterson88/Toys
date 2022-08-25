@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.State;
-using System;
+using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.General
 {
     class Player : MonoBehaviour
     {

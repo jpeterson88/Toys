@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Top Down Battle Proto.unity
+    path: Assets/Scenes/Top Down Battle Proto - Old.unity
     guid: b9a3c7193ac855247b0c0a1797f3d4ac
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d98f15c714364d441969b6d7cc721552,

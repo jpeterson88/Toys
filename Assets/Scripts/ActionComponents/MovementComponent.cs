@@ -1,5 +1,6 @@
 using Assets.Scripts.SpriteAnims;
 using Assets.Scripts.State;
+using Assets.Scripts.Utility;
 using UnityEngine;
 
 namespace Assets.Scripts

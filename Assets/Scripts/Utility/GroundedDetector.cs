@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Utility;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Utility
 {
     class GroundedDetector : MonoBehaviour
     {
