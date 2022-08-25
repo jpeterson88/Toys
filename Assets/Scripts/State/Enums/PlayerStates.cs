@@ -9,6 +9,7 @@
         Attack1 = 4,
         Attack2 = 5,
         Climb = 6,
-        Ledge = 7
+        Ledge = 7,
+        Hurt
     }
 }

@@ -6237,12 +6237,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 627404603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5bd326eb74354246ad2c119451165d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cecbf6fd274b544b8e6152079a1a3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1142743918}
-  topDownPlayer: {fileID: 0}
+  enemyTags:
+  - Enemy
+  playerState: {fileID: 752119819}
   ps: {fileID: 539066302}
+--- !u!1 &676788452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676788453}
+  - component: {fileID: 676788454}
+  m_Layer: 0
+  m_Name: Hurt Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &676788453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676788452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 889220541}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676788454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676788452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8918755709ae7a489f5caf5c4225d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 627404610}
+  hurtKnockbackSpeed: 500
+  hurtDuration: 0.3
+  hurtCd: 2
+  randomAudio: {fileID: 887870455}
 --- !u!1 &724964517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,6 +6370,7 @@ Transform:
   m_Children:
   - {fileID: 1247431337}
   - {fileID: 724964518}
+  - {fileID: 1795424005}
   m_Father: {fileID: 627404607}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6602,6 +6653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887870454}
+  - component: {fileID: 887870455}
   m_Layer: 0
   m_Name: Screech
   m_TagString: Untagged
@@ -6627,6 +6679,18 @@ Transform:
   m_Father: {fileID: 431442856}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &887870455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887870453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c08dac90aa9794eb327852438fa72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &889220540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6657,6 +6721,7 @@ Transform:
   m_Children:
   - {fileID: 933181732}
   - {fileID: 1613315020}
+  - {fileID: 676788453}
   m_Father: {fileID: 627404607}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7443,12 +7508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3097874e502b5a84eafc6ab7422402b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lungeDelay: 0
-  lungeSpeed: 0
-  lungeCd: 0
-  rb2d: {fileID: 0}
-  lungeSfx: {fileID: 0}
-  lungePs: {fileID: 0}
+  delay: 0.2
+  speed: 2000
+  cooldown: 0.5
+  rb2d: {fileID: 627404610}
+  sfx: {fileID: 2101647707}
+  particles: {fileID: 2094897693}
 --- !u!1 &1620210365
 GameObject:
   m_ObjectHideFlags: 0
@@ -7804,6 +7869,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1795424004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795424005}
+  - component: {fileID: 1795424006}
+  m_Layer: 0
+  m_Name: Hurt Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795424005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795424004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752119818}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795424006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795424004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd301c4a5db4014ea136d0b9f045d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHandleStates: 08000000
+  hurtComponent: {fileID: 676788454}
 --- !u!1 &1796780772
 GameObject:
   m_ObjectHideFlags: 0
@@ -7984,7 +8095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1941878545
 Rigidbody2D:
   serializedVersion: 4
@@ -8386,7 +8497,7 @@ GameObject:
   - component: {fileID: 2094897693}
   - component: {fileID: 2094897692}
   m_Layer: 0
-  m_Name: Lunge particle
+  m_Name: Charge particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13199,7 +13310,7 @@ GameObject:
   - component: {fileID: 2101647706}
   - component: {fileID: 2101647707}
   m_Layer: 0
-  m_Name: Lunge
+  m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

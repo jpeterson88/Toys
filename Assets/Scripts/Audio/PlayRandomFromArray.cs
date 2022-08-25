@@ -4,11 +4,19 @@ namespace Assets.Scripts.Utility
 {
     class PlayRandomFromArray : MonoBehaviour
     {
-        [SerializeField] private AudioSource[] sources;
+        private AudioSource[] sources;
+
+        private void Awake()
+        {
+            sources = GetComponentsInChildren<AudioSource>();
+
+            if (sources == null)
+                Debug.LogError($"Failed to get sources for PlayRandomFromArray On Object {transform.root.name}");
+        }
 
         public void PlayRandom()
         {
-            int index = UnityEngine.Random.Range(0, sources.Length);
+            int index = Random.Range(0, sources.Length);
 
             var source = sources[index];
 
