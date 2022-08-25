@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Input;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ namespace Assets.Scripts.Prototype
         [SerializeField] private float takeDamageForce;
 
         [SerializeField] private Rigidbody2D rb2d;
-        [SerializeField] private GameObject player;
         [SerializeField] private float offset;
 
         [SerializeField] private float hitDuration;
@@ -20,6 +20,15 @@ namespace Assets.Scripts.Prototype
 
         private bool isHit, isOnMoveCd, recentlyDidDamage;
         private float moveDuration;
+        private PlayerInputMap player;
+
+        private void Awake()
+        {
+            player = FindObjectOfType<PlayerInputMap>();
+
+            if (player == null)
+                Debug.Log("Enemy could not fight player");
+        }
 
         public void TakeHit()
         {
