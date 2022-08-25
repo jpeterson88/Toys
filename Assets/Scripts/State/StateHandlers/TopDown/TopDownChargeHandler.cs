@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.ActionComponents.TopDown;
+using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers.TopDown
 {
-    class TopDownChargeHandler
+    class TopDownChargeHandler : StateHandlerBase
     {
+        [SerializeField] private TopDownChargeComponent chargeComponent;
+
+        internal override void OnEnter(int state)
+        {
+            base.OnEnter(state);
+            chargeComponent.InitiateCharge();
+        }
+
+        internal override void OnFixedUpdate()
+        {
+            base.OnFixedUpdate();
+
+            if (IsInCurrentHandlerState() && !chargeComponent.IsCharging())
+                SetState(PlayerStates.Idle);
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            chargeComponent.Reset();
+        }
     }
 }

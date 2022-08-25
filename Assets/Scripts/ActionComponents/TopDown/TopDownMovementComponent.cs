@@ -15,7 +15,7 @@ namespace Assets.Scripts.ActionComponents.TopDown
             if (moveVector.x != 0)
             {
                 Vector2 lookDirection = moveVector.x > 0 ? Vector2.left : Vector2.right;
-                transform.Rotate(new Vector3(0, 0, lookDirection.x * rotationSpeed * Time.deltaTime));
+                transform.root.Rotate(new Vector3(0, 0, lookDirection.x * rotationSpeed * Time.deltaTime));
             }
 
             //Is walking
@@ -24,7 +24,7 @@ namespace Assets.Scripts.ActionComponents.TopDown
                 if (!walkSfx.isPlaying)
                     walkSfx?.Play();
 
-                Vector2 direction = moveVector.y > 0 ? transform.up : -transform.up;
+                Vector2 direction = moveVector.y > 0 ? transform.root.up : -transform.root.up;
                 rb2d.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Force);
             }
             else if (walkSfx.isPlaying)
