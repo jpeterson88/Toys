@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.General;
+using Assets.Scripts.Scriptables.Events;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,14 +17,18 @@ namespace Assets.Scripts.ActionComponents.TopDown
         [SerializeField] private ParticleSystem particles;
         [SerializeField] private TimerComponent timer;
         [SerializeField] private bool rotateDuringDelay;
+        [SerializeField] private TargetComponent targetComponent;
+        [SerializeField] private ChargeMeterEvent chargeReadyEvent, chargeUsedEvent;
 
         private bool isCharging, delayComplete;
+        private Coroutine chargeRoutine;
 
         public void InitiateCharge()
         {
             isCharging = true;
             delayComplete = false;
-            StartCoroutine(ChargeCd());
+            chargeUsedEvent?.Invoke();
+            chargeRoutine = StartCoroutine(ChargeCd());
         }
 
         public bool IsCharging() => isCharging;
@@ -35,16 +41,19 @@ namespace Assets.Scripts.ActionComponents.TopDown
             particles?.Play();
             delayComplete = true;
             yield return new WaitForSeconds(chargeDuration);
-            timer.Begin();
             isCharging = false;
         }
 
         public void RotateDuringDelay()
         {
-            if (rotateDuringDelay && !delayComplete)
+            if (targetComponent != null && targetComponent.GetTarget() != null)
             {
-                Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
-                transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                if (rotateDuringDelay && !delayComplete)
+                {
+                    Vector2 direction = targetComponent.GetTarget().position - transform.root.position;
+                    Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
+                    transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                }
             }
         }
 
@@ -53,7 +62,11 @@ namespace Assets.Scripts.ActionComponents.TopDown
         public void Reset()
         {
             particles?.Stop();
-            //TODO: Potentially stop Coroutine if forced exit?
+            isCharging = false;
+            delayComplete = false;
+            StopCoroutine(chargeRoutine);
+
+            timer.Begin(() => chargeReadyEvent?.Invoke());
         }
     }
 }

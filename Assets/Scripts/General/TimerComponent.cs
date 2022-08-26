@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.General
@@ -9,8 +10,13 @@ namespace Assets.Scripts.General
 
         private float currentDuration;
         private bool isActive;
+        private Action nextCallback;
 
-        public void Begin() => isActive = true;
+        public void Begin(Action callback = null)
+        {
+            nextCallback = callback;
+            isActive = true;
+        }
 
         public bool IsActive() => isActive;
 
@@ -21,7 +27,10 @@ namespace Assets.Scripts.General
                 currentDuration += Time.deltaTime;
 
                 if (currentDuration >= duration)
+                {
+                    nextCallback?.Invoke();
                     End();
+                }
             }
         }
 
@@ -29,6 +38,7 @@ namespace Assets.Scripts.General
         {
             currentDuration = 0f;
             isActive = false;
+            nextCallback = null;
         }
     }
 }

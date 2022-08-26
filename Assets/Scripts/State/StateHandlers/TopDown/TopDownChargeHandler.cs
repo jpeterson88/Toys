@@ -19,6 +19,8 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
 
             if (IsInCurrentHandlerState() && !chargeComponent.IsCharging())
                 SetState(PlayerStates.Idle);
+            else
+                chargeComponent.RotateDuringDelay();
         }
 
         internal override void OnExit()

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.ActionComponents.TopDown;
+﻿using Assets.Scripts.ActionComponents;
+using Assets.Scripts.ActionComponents.TopDown;
 using Assets.Scripts.Input;
 using Assets.Scripts.Utility;
 using UnityEngine;
@@ -13,22 +14,10 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
         [SerializeField] private float idleAfterDuration, idleForDuration;
 
         [SerializeField] private RaycastCheck playerDetector;
+        [SerializeField] private TargetComponent targetComponent;
 
         private float currentMoveDuration, currentIdleDuration;
         private bool isIdling;
-
-        private Transform target;
-
-        private void Awake()
-        {
-            //TODO: May need to refactor for finding target more dynamically.
-            var gObject = FindObjectOfType<PlayerInputMap>();
-
-            if (gObject == null)
-                Debug.Log($"Unable to find player for object {transform.root.name}");
-            else
-                target = gObject.transform;
-        }
 
         internal override void OnEnter(int state)
         {
@@ -65,7 +54,7 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
                 }
                 else
                 {
-                    Vector2 direction = target.position - transform.root.position;
+                    Vector2 direction = targetComponent.GetTarget().position - transform.root.position;
                     moveComponent.ApplyMovement(direction.normalized);
                 }
             }

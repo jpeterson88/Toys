@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &89567508988992085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2218539331860431921}
+  - component: {fileID: 4708704680983623805}
+  m_Layer: 0
+  m_Name: Target Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2218539331860431921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89567508988992085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1361175266653043681}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4708704680983623805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89567508988992085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853b2933313b04142be0fd249f282cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &155770058652408735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,7 +5111,7 @@ MonoBehaviour:
   rb2d: {fileID: 1361175266214936527}
   hurtKnockbackSpeed: 500
   hurtDuration: 0.3
-  hurtCd: 2
+  hurtCd: 1.5
   randomAudio: {fileID: 0}
   stateMachine: {fileID: 1361175265471287985}
   enableLogs: 0
@@ -5206,6 +5250,7 @@ MonoBehaviour:
   idleAfterDuration: 5
   idleForDuration: 3
   playerDetector: {fileID: 7884634827749285227}
+  targetComponent: {fileID: 4708704680983623805}
 --- !u!1 &1361175265261527429
 GameObject:
   m_ObjectHideFlags: 0
@@ -5865,6 +5910,7 @@ Transform:
   - {fileID: 1361175265261527426}
   - {fileID: 1361175264735046763}
   - {fileID: 3046178053084168410}
+  - {fileID: 2218539331860431921}
   m_Father: {fileID: 1361175266214936525}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6316,13 +6362,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3097874e502b5a84eafc6ab7422402b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.7
-  speed: 2000
+  delay: 1
+  speed: 1900
   chargeDuration: 0.5
+  rotationSpeed: 50
   rb2d: {fileID: 1361175266214936527}
   sfx: {fileID: 8485738925412031132}
   particles: {fileID: 2768259544183029567}
   timer: {fileID: 1305635235041723921}
+  rotateDuringDelay: 1
+  targetComponent: {fileID: 4708704680983623805}
+  chargeReadyEvent: {fileID: 0}
+  chargeUsedEvent: {fileID: 0}
 --- !u!114 &1305635235041723921
 MonoBehaviour:
   m_ObjectHideFlags: 0
