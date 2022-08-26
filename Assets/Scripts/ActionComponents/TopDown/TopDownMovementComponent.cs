@@ -12,6 +12,7 @@ namespace Assets.Scripts.ActionComponents.TopDown
 
         internal void ApplyMovement(Vector2 moveVector)
         {
+            //Rotate object
             if (moveVector.x != 0)
             {
                 Vector2 lookDirection = moveVector.x > 0 ? Vector2.left : Vector2.right;

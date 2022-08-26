@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top Down Player - Absolute
       objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938968, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3160048711678938972, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
       propertyPath: m_RootOrder
@@ -67,10 +72,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3160048711766005893, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 8661372612800609163}
     m_RemovedComponents:
     - {fileID: 3160048713409424073, guid: 750737e0079848f4bbe24d863f317716, type: 3}
     - {fileID: 3160048711979473222, guid: 750737e0079848f4bbe24d863f317716, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 750737e0079848f4bbe24d863f317716, type: 3}
+--- !u!114 &8661372611533189197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3160048712705743790, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3097874e502b5a84eafc6ab7422402b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8661372611680942438 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3160048712859783813, guid: 750737e0079848f4bbe24d863f317716,
@@ -97,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canHandleStates: 0000000001000000
   movement: {fileID: 1675487473176413121}
+  chargeComponent: {fileID: 8661372611533189197}
 --- !u!1 &8661372612410978979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3160048711979473216, guid: 750737e0079848f4bbe24d863f317716,
@@ -115,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5946ededfcabe4f9cb004167f1e966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1850
-  rotationSpeed: 215
+  moveSpeed: 1770
+  rotationSpeed: 350
   rb2d: {fileID: 8661372612661208258}
   walkSfx: {fileID: 8661372611680942438}
 --- !u!50 &8661372612661208258 stripped
@@ -125,3 +148,15 @@ Rigidbody2D:
     type: 3}
   m_PrefabInstance: {fileID: 6046609233736772579}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8661372612800609163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3160048711824625768, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4ba7fd6f241a7458a766012462f377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

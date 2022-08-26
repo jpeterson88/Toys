@@ -13,6 +13,8 @@ namespace Assets.Scripts.ActionComponents.TopDown
         [SerializeField] private float hurtCd;
         [SerializeField] private PlayRandomFromArray randomAudio;
         [SerializeField] private PlayerStateMachine stateMachine;
+        [SerializeField] private bool enableLogs, breakOnContact;
+
         private bool isHurt, canTakeDamage = true;
         private Vector2 recentContactNormal;
 
@@ -36,7 +38,15 @@ namespace Assets.Scripts.ActionComponents.TopDown
 
         public IEnumerator HurtCd()
         {
-            Debug.Log(recentContactNormal);
+            if (enableLogs)
+            {
+                Debug.Log($"Contact normal: {recentContactNormal}");
+                Debug.DrawRay(transform.root.position, recentContactNormal, Color.green);
+            }
+
+            if (breakOnContact)
+                Debug.Break();
+
             rb2d.AddForce(recentContactNormal * hurtKnockbackSpeed, ForceMode2D.Force);
             yield return new WaitForSeconds(hurtDuration);
             isHurt = false;

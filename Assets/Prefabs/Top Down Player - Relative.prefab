@@ -77,10 +77,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 89ff6b56512623548a10dcdd4e96223a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 72192f09c5db3a24da92bef6b4b551de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -5357,6 +5357,9 @@ MonoBehaviour:
   hurtDuration: 0.3
   hurtCd: 2
   randomAudio: {fileID: 3160048711955084180}
+  stateMachine: {fileID: 0}
+  enableLogs: 0
+  breakOnContact: 0
 --- !u!1 &3160048711784903878
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,10 +5980,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c09492fb18d47eb4e963fd2a0212496e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 72192f09c5db3a24da92bef6b4b551de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.25
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -6073,6 +6076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160048712705743791}
   - component: {fileID: 3160048712705743790}
+  - component: {fileID: 8227268899063175752}
   m_Layer: 0
   m_Name: Charge Component
   m_TagString: Untagged
@@ -6109,10 +6113,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.2
   speed: 2000
-  cooldown: 0.5
+  chargeDuration: 0.5
   rb2d: {fileID: 3160048711678938913}
   sfx: {fileID: 3160048713157327160}
   particles: {fileID: 3160048713166305918}
+  timer: {fileID: 8227268899063175752}
+--- !u!114 &8227268899063175752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160048712705743784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85d785ad63bcb5418be6db5d9f72bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!1 &3160048712782644186
 GameObject:
   m_ObjectHideFlags: 0
@@ -11629,10 +11647,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7dc97ca88a8aef34bbb1a4f0481b2611, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 72192f09c5db3a24da92bef6b4b551de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.75
   Loop: 0
   Mute: 0
   Spatialize: 0

@@ -19,14 +19,20 @@ namespace Assets.Scripts.Interactables
                 if (collision.transform.root.CompareTag(tag))
                 {
                     bodyHitSfx?.Play();
-                    var enemy = collision.transform.GetComponentInChildren<TopDownHurtComponent>();
+
                     if (playerState.GetCurrentState() == (int)PlayerStates.Attack2)
                     {
-                        enemy.SetRecentContactNormal(collision.contacts[0].normal);
+                        var enemy = collision.transform.GetComponentInChildren<TopDownHurtComponent>();
+
+                        //Normal needs to be reversed because the player is the object which detects the contact point
+                        //This would be different if the enemy detected the contact
+                        enemy.SetRecentContactNormal(-collision.contacts[0].normal);
+                        playerState.SetState((int)PlayerStates.Idle);
                     }
                     else if (hurtComponent.CanTakeDamage())
                     {
-                        //enemy.DoDamage();
+                        var enemySm = collision.transform.GetComponentInChildren<PlayerStateMachine>();
+                        enemySm.SetState((int)PlayerStates.Idle);
                         hurtComponent.SetRecentContactNormal(collision.contacts[0].normal);
                         playerState.SetState((int)PlayerStates.Hurt);
                     }

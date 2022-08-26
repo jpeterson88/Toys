@@ -7,6 +7,7 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
     class TopDownMoveHandlerAbsolute : StateHandlerBase
     {
         [SerializeField] private TopDownMovementComponentAbsolute movement;
+        [SerializeField] private TopDownChargeComponent chargeComponent;
 
         private IInput input;
 
@@ -22,7 +23,7 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
 
         private void HandleAttack2Pressed()
         {
-            if (IsInCurrentHandlerState())
+            if (IsInCurrentHandlerState() && chargeComponent.CanCharge())
                 SetState(PlayerStates.Attack2);
         }
 
@@ -35,6 +36,12 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
                 Vector2 moveVector = input.GetMoveVector();
                 movement.ApplyMovement(moveVector);
             }
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            movement.Exit();
         }
     }
 }

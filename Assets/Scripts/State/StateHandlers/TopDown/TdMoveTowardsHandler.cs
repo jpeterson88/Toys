@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.ActionComponents.TopDown;
 using Assets.Scripts.Input;
+using Assets.Scripts.Utility;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers.TopDown
@@ -10,6 +11,8 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
 
         [Tooltip("Will not pause if set to 0")]
         [SerializeField] private float idleAfterDuration, idleForDuration;
+
+        [SerializeField] private RaycastCheck playerDetector;
 
         private float currentMoveDuration, currentIdleDuration;
         private bool isIdling;
@@ -41,14 +44,19 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
             {
                 currentMoveDuration += Time.deltaTime;
 
-                if (idleAfterDuration > 0 && currentMoveDuration >= idleAfterDuration)
+                playerDetector.Check();
+                if (playerDetector.IsHit())
+                {
+                    SetState(PlayerStates.Attack2);
+                }
+                else if (idleAfterDuration > 0 && currentMoveDuration >= idleAfterDuration)
                 {
                     currentMoveDuration = 0f;
                     isIdling = true;
                 }
                 else if (isIdling)
                 {
-                    idleForDuration += Time.deltaTime;
+                    currentIdleDuration += Time.deltaTime;
                     if (currentIdleDuration >= idleForDuration)
                     {
                         currentIdleDuration = 0f;
@@ -61,6 +69,15 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
                     moveComponent.ApplyMovement(direction.normalized);
                 }
             }
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            currentMoveDuration = 0f;
+            currentIdleDuration = 0f;
+            isIdling = false;
+            moveComponent.Exit();
         }
     }
 }

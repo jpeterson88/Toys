@@ -29,8 +29,11 @@ namespace Assets.Scripts.ActionComponents.TopDown
                     transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, rotationSpeed * Time.deltaTime);
                 }
             }
-            else if (walkSfx.isPlaying)
-                walkSfx.Stop();
+        }
+
+        public void Exit()
+        {
+            walkSfx.Stop();
         }
     }
 }

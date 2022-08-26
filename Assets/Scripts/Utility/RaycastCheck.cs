@@ -6,14 +6,15 @@ namespace Assets.Scripts.Utility
     {
         [SerializeField] private float distance;
         [SerializeField] private LayerMask layer;
+        [SerializeField] private bool isForwardVector;
         [SerializeField] private Vector2 direction;
+        [SerializeField] private bool debug;
 
         private bool isHit;
-        private RaycastHit2D hit;
 
         public void Check()
         {
-            hit = Physics2D.Raycast(transform.position, direction, distance, layer);
+            RaycastHit2D hit = Scan();
 
             isHit = hit.transform != null;
         }
@@ -22,16 +23,34 @@ namespace Assets.Scripts.Utility
 
         void OnDrawGizmos()
         {
-            if (isHit)
+            if (debug)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawRay(transform.position, direction * hit.distance);
+                RaycastHit2D hit = Scan();
+                Vector2 rayDirection = isForwardVector ? transform.up : direction;
+
+                if (hit.transform != null)
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawRay(transform.position, rayDirection * hit.distance);
+                }
+                else
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawRay(transform.position, rayDirection * distance);
+                }
             }
+        }
+
+        private RaycastHit2D Scan()
+        {
+            RaycastHit2D hit;
+
+            if (isForwardVector)
+                hit = Physics2D.Raycast(transform.position, transform.up, distance, layer);
             else
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawRay(transform.position, direction * distance);
-            }
+                hit = Physics2D.Raycast(transform.position, direction, distance, layer);
+
+            return hit;
         }
     }
 }
