@@ -90,7 +90,6 @@ namespace Assets.Scripts.Prototype
 
         private IEnumerator DamageCd()
         {
-            recentlyDidDamage = true;
             yield return new WaitForSeconds(dealtDamageCooldown);
             recentlyDidDamage = false;
         }

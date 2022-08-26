@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Utility;
+﻿using Assets.Scripts.State;
+using Assets.Scripts.Utility;
 using System.Collections;
 using UnityEngine;
 
@@ -11,7 +12,15 @@ namespace Assets.Scripts.ActionComponents.TopDown
         [SerializeField] private float hurtDuration;
         [SerializeField] private float hurtCd;
         [SerializeField] private PlayRandomFromArray randomAudio;
-        private bool isHurt, canTakeDamage;
+        [SerializeField] private PlayerStateMachine stateMachine;
+        private bool isHurt, canTakeDamage = true;
+        private Vector2 recentContactNormal;
+
+        public void SetRecentContactNormal(Vector2 contactNormal)
+        {
+            recentContactNormal = contactNormal;
+            stateMachine.SetState((int)PlayerStates.Hurt);
+        }
 
         public void TakeDamage()
         {
@@ -27,7 +36,8 @@ namespace Assets.Scripts.ActionComponents.TopDown
 
         public IEnumerator HurtCd()
         {
-            rb2d.AddForce(-transform.up * hurtKnockbackSpeed, ForceMode2D.Force);
+            Debug.Log(recentContactNormal);
+            rb2d.AddForce(recentContactNormal * hurtKnockbackSpeed, ForceMode2D.Force);
             yield return new WaitForSeconds(hurtDuration);
             isHurt = false;
             yield return new WaitForSeconds(hurtCd);

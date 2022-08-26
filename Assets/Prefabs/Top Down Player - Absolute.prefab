@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1250
-  rotationSpeed: 250
+  rotationSpeed: 275
   rb2d: {fileID: 8661372612661208258}
   walkSfx: {fileID: 8661372611680942438}
 --- !u!50 &8661372612661208258 stripped
