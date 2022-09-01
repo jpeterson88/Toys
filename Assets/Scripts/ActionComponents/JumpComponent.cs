@@ -8,7 +8,7 @@ namespace Assets.Scripts
     class JumpComponent : MonoBehaviour
     {
         [SerializeField] private FacingDirection facingDirection;
-        [SerializeField] private Vector2 force;
+        [SerializeField] private Vector2 leftRightForce, verticalForce;
         [SerializeField] private CircleCollider2D environmentInteractor;
 
         private JumpSquashWobble jumpSquashWobble;
@@ -51,12 +51,12 @@ namespace Assets.Scripts
             if (Mathf.Abs(moveVector.x) > 0)
             {
                 //Vector2 directionFacing = facingDirection.GetFacingDirection();
-                Vector2 appliedForce = moveVector == Vector2.left ? new Vector2(-force.x, force.y) : new Vector2(force.x, force.y);
+                Vector2 appliedForce = moveVector == Vector2.left ? new Vector2(-leftRightForce.x, leftRightForce.y) : new Vector2(leftRightForce.x, leftRightForce.y);
                 rb2d.AddForce(appliedForce, ForceMode2D.Impulse);
             }
             else
             {
-                rb2d.AddForce(new Vector2(0, force.y), ForceMode2D.Impulse);
+                rb2d.AddForce(verticalForce, ForceMode2D.Impulse);
             }
         }
 

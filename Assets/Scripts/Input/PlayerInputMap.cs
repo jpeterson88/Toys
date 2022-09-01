@@ -10,6 +10,7 @@ namespace Assets.Scripts.Input
 
         public Action JumpPressed { get; set; }
         public Action Attack2Pressed { get; set; }
+        public Action SprintPressed { get; set; }
 
         public Action TriggerLPressed { get; set; }
 
@@ -19,9 +20,23 @@ namespace Assets.Scripts.Input
 
         public Vector2 GetMoveVector() => currentMoveVector;
 
-        public void OnJumpPressed() => JumpPressed?.Invoke();
+        public void OnJumpPressed(CallbackContext callbackContext)
+        {
+            if (callbackContext.performed)
+                JumpPressed?.Invoke();
+        }
 
-        public void OnAttack2Pressed() => Attack2Pressed?.Invoke();
+        public void OnAttack2Pressed(CallbackContext callbackContext)
+        {
+            if (callbackContext.performed)
+                Attack2Pressed?.Invoke();
+        }
+
+        public void OnSprintPressed(CallbackContext callbackContext)
+        {
+            if (callbackContext.performed)
+                SprintPressed?.Invoke();
+        }
 
         public void OnTriggerLPressed() => TriggerLPressed?.Invoke();
 

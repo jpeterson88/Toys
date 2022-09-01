@@ -6363,7 +6363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  speed: 1900
+  speed: 1200
   chargeDuration: 0.5
   rotationSpeed: 50
   rb2d: {fileID: 1361175266214936527}
@@ -6431,7 +6431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73754f39d809b90478c3b07ac16f5f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 3.5
+  distance: 2.5
   layer:
     serializedVersion: 2
     m_Bits: 128

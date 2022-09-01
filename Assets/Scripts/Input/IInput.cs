@@ -13,5 +13,6 @@ namespace Assets.Scripts.Input
 
         Action TriggerLPressed { get; set; }
         Action TriggerRPressed { get; set; }
+        Action SprintPressed { get; set; }
     }
 }

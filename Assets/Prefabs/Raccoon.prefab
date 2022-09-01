@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &645984321925399371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3831918587327877626}
+  - component: {fileID: 967417045902973612}
+  m_Layer: 7
+  m_Name: Ground Slam Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3831918587327877626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645984321925399371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299425223213442992}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &967417045902973612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645984321925399371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc771c820f4cc9043beb107cdeb70ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slamForce: 1300
+  rb2d: {fileID: 2698566727371684080}
 --- !u!1 &1650461592821308856
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +132,7 @@ Transform:
   m_Children:
   - {fileID: 4351448032105410436}
   m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3889762339986827352
 MonoBehaviour:
@@ -126,6 +172,53 @@ MonoBehaviour:
   startDuration: 0.5
   lungeDuration: 0.12
   resetDuration: 0.075
+--- !u!1 &2324935456658171758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499230862135348395}
+  - component: {fileID: 1542550164196467142}
+  m_Layer: 7
+  m_Name: Ground Slam Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &499230862135348395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324935456658171758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7579826069974007284}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542550164196467142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324935456658171758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4a4c7332cf12d46950096dfd149a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHandleStates: 09000000
+  groundSlam: {fileID: 967417045902973612}
+  groundedDetector: {fileID: 2698566728864518208}
 --- !u!1 &2676150174584504522
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +417,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7525695500503409670}
         m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
         m_MethodName: OnJumpPressed
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -340,7 +433,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7525695500503409670}
         m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
         m_MethodName: OnAttack2Pressed
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -351,6 +444,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 72d89cd0-0024-433a-948f-32ceb373199c
     m_ActionName: Player/Attack2[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b6e73bb-2226-4163-9015-9e55e6a14191
+    m_ActionName: Player/Trigger L[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6c9dbf09-1c8f-46b9-93b4-6e0528682f48
+    m_ActionName: Player/Trigger R[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7525695500503409670}
+        m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+        m_MethodName: OnSprintPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b719a3e0-7def-450a-9803-24c09e7af5bd
+    m_ActionName: Player/Sprint[/Keyboard/shift,/Keyboard/numpad0]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -489,71 +606,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2698566727511705155
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2698566727511705164}
-  - component: {fileID: 2698566727511705166}
-  - component: {fileID: 2698566727511705165}
-  m_Layer: 7
-  m_Name: Walk Component
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2698566727511705164
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698566727511705155}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2698566727511705166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698566727511705155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e6560fb4bb76e438911af115c9c634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundedDetector: {fileID: 2698566728864518208}
-  moveSpeed: 60
-  maxForce: 3.5
-  stateMachine: {fileID: 1971605927491036936}
---- !u!114 &2698566727511705165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698566727511705155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b360c5138741c341ac84fbc461d4a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteGameObject: {fileID: 2698566727477033746}
-  scaleTo: {x: 1.7, y: 1.35}
-  resetTime: 0.1
-  loopTime: 0.35
 --- !u!1 &2698566727642255670
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +716,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &2698566728325347221
 MonoBehaviour:
@@ -5768,7 +5820,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {fileID: 2698566727650954397}
-  force: {x: 8, y: 7.5}
+  leftRightForce: {x: 8, y: 8}
+  verticalForce: {x: 0, y: 10}
   environmentInteractor: {fileID: 2698566727443750630}
 --- !u!114 &2698566728871492692
 MonoBehaviour:
@@ -5783,7 +5836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteGameObject: {fileID: 2698566727477033746}
-  squashDuration: 0.15
+  squashDuration: 0.1
   wobbleDuration: 0.15
   resetDuration: 0.2
   squashAdjustment: 0.2
@@ -6003,6 +6056,7 @@ Transform:
   - {fileID: 8784874241293747988}
   - {fileID: 6054141997873947694}
   - {fileID: 2615820294899351293}
+  - {fileID: 499230862135348395}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10941,8 +10995,9 @@ GameObject:
   m_Component:
   - component: {fileID: 319065404010382123}
   - component: {fileID: 2195835349016557054}
+  - component: {fileID: 1358805176733726639}
   m_Layer: 7
-  m_Name: Walk v2
+  m_Name: Movement Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10961,7 +11016,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2195835349016557054
 MonoBehaviour:
@@ -10976,9 +11031,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4.5
+  sprintSpeed: 8
   rb: {fileID: 2698566727371684080}
   slopeCheck: {fileID: 7554094786071827838}
-  walkWobble: {fileID: 2698566727511705165}
+  walkWobble: {fileID: 1358805176733726639}
+--- !u!114 &1358805176733726639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168298880454757223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b360c5138741c341ac84fbc461d4a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteGameObject: {fileID: 2698566727477033746}
+  scaleTo: {x: 1.7, y: 1.35}
+  resetTime: 0.1
+  loopTime: 0.35
 --- !u!1 &6471192251525316505
 GameObject:
   m_ObjectHideFlags: 0
@@ -11193,6 +11265,53 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   direction: {x: 0, y: 1}
+--- !u!1 &7810125395887965124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3234993984213899707}
+  - component: {fileID: 3994562313379947263}
+  m_Layer: 7
+  m_Name: Airborne Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3234993984213899707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810125395887965124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299425223213442992}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3994562313379947263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810125395887965124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18ae82a16f8d8e4883e08be17ce5076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+  useForce: 1
+  rb2d: {fileID: 2698566727371684080}
 --- !u!1 &7876688404113715441
 GameObject:
   m_ObjectHideFlags: 0
@@ -11238,7 +11357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHandleStates: 0000000001000000
-  movementComponent: {fileID: 2698566727511705166}
+  movementComponent: {fileID: 0}
   movementComponentv2: {fileID: 2195835349016557054}
   slopeCheck: {fileID: 7554094786071827838}
   groundedDetector: {fileID: 2698566728864518208}
@@ -11322,7 +11441,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9077012490176664621
 MonoBehaviour:
@@ -11336,7 +11455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df21e051f1d8d64bad7b46c795e38d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkWobble: {fileID: 2698566727511705165}
+  walkWobble: {fileID: 1358805176733726639}
   rb2d: {fileID: 2698566727371684080}
   climbSpeed: 150
 --- !u!1 &8243381207046603012
@@ -11390,6 +11509,7 @@ MonoBehaviour:
   environmentInteractor: {fileID: 2698566727443750630}
   rb2d: {fileID: 2698566727371684080}
   ledgeDetector: {fileID: 8614878269204256494}
+  airborneComponent: {fileID: 3994562313379947263}
 --- !u!1 &8358099666703915225
 GameObject:
   m_ObjectHideFlags: 0
@@ -11480,12 +11600,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2698566728871492682}
-  - {fileID: 2698566727511705164}
   - {fileID: 2698566728325347211}
   - {fileID: 5763585999127860999}
   - {fileID: 5572821705520005713}
   - {fileID: 319065404010382123}
   - {fileID: 3949406513801496542}
+  - {fileID: 3234993984213899707}
+  - {fileID: 3831918587327877626}
   m_Father: {fileID: 2698566727371684081}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11519,7 +11640,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 299425223213442992}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3670672869256149631
 MonoBehaviour:

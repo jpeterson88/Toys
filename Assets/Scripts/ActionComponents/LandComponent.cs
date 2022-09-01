@@ -21,7 +21,7 @@ namespace Assets.Scripts
             float absVelocity = Mathf.Abs(landVelocity);
             if (absVelocity >= minimumLandThreshold)
             {
-                Debug.Log(absVelocity);
+                //Debug.Log(absVelocity);
                 PlayAudioByMagnitude(absVelocity);
                 PlayAnimation();
                 HandleShake(absVelocity);

@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6468049
       objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938913, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3160048711678938968, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
       propertyPath: m_Name
@@ -106,6 +111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.3517711
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048712705743790, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: speed
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 5283258204451896292, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
@@ -203,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5946ededfcabe4f9cb004167f1e966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1700
+  moveSpeed: 5000
   rotationSpeed: 250
   rb2d: {fileID: 8661372612661208258}
   walkSfx: {fileID: 8661372611680942438}

@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Input;
+﻿using Assets.Scripts.ActionComponents;
+using Assets.Scripts.Input;
 using Assets.Scripts.Utility;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -12,17 +14,27 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private CircleCollider2D environmentInteractor;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private BoxCaster ledgeDetector;
+        [SerializeField] private AirborneComponent airborneComponent;
 
         //TODO: This should likely be in a landed component and have a landed state handler
         private IInput input;
 
         private float currentFallVelocity;
+        private bool attackPressed;
 
         private void Awake()
         {
             input = transform.root.GetComponent<IInput>();
             if (input == null)
                 Debug.LogError("failed to find input for Locomotion handler");
+
+            input.Attack2Pressed += HandleGroundSlam;
+        }
+
+        private void HandleGroundSlam()
+        {
+            if (IsInCurrentHandlerState())
+                SetState(PlayerStates.GroundSlam);
         }
 
         internal override void OnFixedUpdate()
@@ -48,6 +60,7 @@ namespace Assets.Scripts.State.StateHandlers
                 else if (Mathf.Abs(rb2d.velocity.y) > 0)
                 {
                     currentFallVelocity = rb2d.velocity.y;
+                    airborneComponent.Move(input.GetMoveVector());
                 }
             }
         }

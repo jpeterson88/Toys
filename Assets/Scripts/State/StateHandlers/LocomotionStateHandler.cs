@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.ActionComponents;
 using Assets.Scripts.Input;
 using Assets.Scripts.Utility;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -15,6 +16,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private FacingDirection facingDirection;
 
         private IInput input;
+        private bool sprintPressed;
 
         private void Awake()
         {
@@ -24,7 +26,10 @@ namespace Assets.Scripts.State.StateHandlers
 
             input.JumpPressed += HandleJumpPressed;
             input.Attack2Pressed += HandleAttack2Pressed;
+            input.SprintPressed += HandleSprintPressed;
         }
+
+        private void HandleSprintPressed() => sprintPressed = true;
 
         private void HandleAttack2Pressed()
         {
@@ -55,7 +60,6 @@ namespace Assets.Scripts.State.StateHandlers
             }
             else if (climbDetector.CanClimb() && Mathf.Abs(input.GetMoveVector().y) > .5f && IsInCurrentHandlerState())
             {
-                Debug.Log(input.GetMoveVector().y);
                 SetState(PlayerStates.Climb);
             }
             else
@@ -68,15 +72,22 @@ namespace Assets.Scripts.State.StateHandlers
                 {
                     SetState(PlayerStates.Walk);
                     facingDirection.SetFacingDirection(moveVector);
-                    movementComponentv2.ApplyMovement(moveVector);
+                    movementComponentv2.ApplyMovement(moveVector, sprintPressed);
                     //movementComponent.Move(moveVector);
                 }
                 else
                 {
                     SetState(PlayerStates.Idle);
+                    sprintPressed = false;
                 }
                 //otherwise we're idle
             }
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            sprintPressed = false;
         }
     }
 }

@@ -10,6 +10,7 @@
         Attack2 = 5,
         Climb = 6,
         Ledge = 7,
-        Hurt = 8
+        Hurt = 8,
+        GroundSlam = 9
     }
 }
