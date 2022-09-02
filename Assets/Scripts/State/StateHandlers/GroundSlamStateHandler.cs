@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.ActionComponents.TopDown;
+﻿using Assets.Scripts.ActionComponents;
 using Assets.Scripts.Utility;
 using UnityEngine;
 
@@ -21,6 +21,12 @@ namespace Assets.Scripts.State.StateHandlers
 
             if (IsInCurrentHandlerState() && groundedDetector.IsGrounded())
                 SetState(PlayerStates.Idle);
+        }
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            groundSlam.Reset();
         }
     }
 }

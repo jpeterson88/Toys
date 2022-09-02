@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3831918587327877626}
   - component: {fileID: 967417045902973612}
+  - component: {fileID: 5176516029081738821}
   m_Layer: 7
   m_Name: Ground Slam Component
   m_TagString: Untagged
@@ -44,8 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc771c820f4cc9043beb107cdeb70ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slamForce: 1300
+  slamForce: 1200
   rb2d: {fileID: 2698566727371684080}
+  boxCaster: {fileID: 5176516029081738821}
+--- !u!114 &5176516029081738821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645984321925399371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af8dddeb7c5a4c479b8a931d93dae32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 2.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 4160
+  direction: {x: 0, y: -1}
 --- !u!1 &1650461592821308856
 GameObject:
   m_ObjectHideFlags: 0
@@ -5752,7 +5771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5b78590b9fa1498a97072cec8d930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0.05
   detectableLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -11309,9 +11327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18ae82a16f8d8e4883e08be17ce5076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
-  useForce: 1
+  moveSpeed: 10
+  useForce: 0
   rb2d: {fileID: 2698566727371684080}
+  maxSpeed: 11
 --- !u!1 &7876688404113715441
 GameObject:
   m_ObjectHideFlags: 0
@@ -11510,6 +11529,7 @@ MonoBehaviour:
   rb2d: {fileID: 2698566727371684080}
   ledgeDetector: {fileID: 8614878269204256494}
   airborneComponent: {fileID: 3994562313379947263}
+  slamComponent: {fileID: 967417045902973612}
 --- !u!1 &8358099666703915225
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,12 +15,12 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private BoxCaster ledgeDetector;
         [SerializeField] private AirborneComponent airborneComponent;
+        [SerializeField] private GroundSlamComponent slamComponent;
 
         //TODO: This should likely be in a landed component and have a landed state handler
         private IInput input;
 
         private float currentFallVelocity;
-        private bool attackPressed;
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace Assets.Scripts.State.StateHandlers
 
         private void HandleGroundSlam()
         {
-            if (IsInCurrentHandlerState())
+            if (IsInCurrentHandlerState() && slamComponent.CanSlam())
                 SetState(PlayerStates.GroundSlam);
         }
 

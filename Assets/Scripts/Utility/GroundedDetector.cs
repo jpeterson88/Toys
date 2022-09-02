@@ -1,15 +1,10 @@
-﻿using Assets.Scripts.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Utility
 {
     class GroundedDetector : MonoBehaviour
     {
-        [SerializeField]
-        private float distance;
-
-        [SerializeField]
-        private LayerMask detectableLayers;
+        [SerializeField] private LayerMask detectableLayers;
 
         [SerializeField] private BoxCaster boxCaster;
 
