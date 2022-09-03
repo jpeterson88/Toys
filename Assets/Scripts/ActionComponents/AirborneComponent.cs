@@ -19,8 +19,6 @@ namespace Assets.Scripts.ActionComponents
                 {
                     if (rb2d.velocity.magnitude < maxSpeed)
                         rb2d.velocity = new Vector2(rb2d.velocity.x + (moveSpeed * Time.deltaTime), rb2d.velocity.y);
-                    else
-                        Debug.Log("NOT APPLYING");
                 }
             }
             else if (inputDirection.x < 0)
@@ -30,10 +28,7 @@ namespace Assets.Scripts.ActionComponents
                 else
                 {
                     if (rb2d.velocity.magnitude < maxSpeed)
-
                         rb2d.velocity = new Vector2(rb2d.velocity.x - (moveSpeed * Time.deltaTime), rb2d.velocity.y);
-                    else
-                        Debug.Log("NOT APPLYING");
                 }
             }
         }

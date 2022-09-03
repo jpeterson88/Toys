@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Utility;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.ActionComponents
@@ -8,6 +9,8 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private float slamForce;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private BoxCaster boxCaster;
+        [SerializeField] private AudioSource whoosh;
+        [SerializeField] private float slamPause;
         private float startingDrag;
 
         private void Awake()
@@ -19,6 +22,13 @@ namespace Assets.Scripts.ActionComponents
         {
             rb2d.drag = 0f;
             rb2d.velocity = Vector2.zero;
+            StartCoroutine(SlamDelay());
+        }
+
+        private IEnumerator SlamDelay()
+        {
+            yield return new WaitForSeconds(slamPause);
+            whoosh?.Play();
             rb2d.AddForce(Vector2.down * slamForce);
         }
 
