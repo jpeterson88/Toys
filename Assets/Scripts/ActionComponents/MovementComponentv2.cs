@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.SpriteAnims;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.SpriteAnims;
 using Assets.Scripts.Utility;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private SlopeCheck slopeCheck;
         [SerializeField] private WalkWobble walkWobble;
+        [SerializeField] private DelayPlayList walkSfx;
 
         private Vector2 newVelocity;
 
@@ -29,9 +31,19 @@ namespace Assets.Scripts.ActionComponents
             }
 
             if (Mathf.Abs(moveVector.x) > 0 && !walkWobble.IsWobbling())
+            {
                 walkWobble.StartWobble();
-            else if (moveVector.x == 0 && walkWobble.IsWobbling())
-                walkWobble.StopWobble();
+
+                if (!walkSfx.IsPlaying())
+                    walkSfx.Play();
+            }
+        }
+
+        public void Stop()
+        {
+            walkWobble.StopWobble();
+
+            walkSfx.Stop();
         }
     }
 }

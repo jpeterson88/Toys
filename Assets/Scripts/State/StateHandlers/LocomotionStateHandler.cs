@@ -1,14 +1,12 @@
 ﻿using Assets.Scripts.ActionComponents;
 using Assets.Scripts.Input;
 using Assets.Scripts.Utility;
-using System;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
 {
     class LocomotionStateHandler : StateHandlerBase
     {
-        [SerializeField] private MovementComponent movementComponent;
         [SerializeField] private MovementComponentv2 movementComponentv2;
         [SerializeField] private SlopeCheck slopeCheck;
         [SerializeField] private GroundedDetector groundedDetector;
@@ -79,6 +77,7 @@ namespace Assets.Scripts.State.StateHandlers
                 {
                     SetState(PlayerStates.Idle);
                     sprintPressed = false;
+                    movementComponentv2.Stop();
                 }
                 //otherwise we're idle
             }
@@ -88,6 +87,7 @@ namespace Assets.Scripts.State.StateHandlers
         {
             base.OnExit();
             sprintPressed = false;
+            movementComponentv2.Stop();
         }
     }
 }
