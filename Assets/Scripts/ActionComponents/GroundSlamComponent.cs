@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Utility;
+﻿using Assets.Scripts.General;
+using Assets.Scripts.Utility;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private BoxCaster boxCaster;
         [SerializeField] private AudioSource whoosh;
         [SerializeField] private float slamPause;
+        [SerializeField] private TimerComponent timer;
+
         private float startingDrag;
 
         private void Awake()
@@ -30,13 +33,14 @@ namespace Assets.Scripts.ActionComponents
             yield return new WaitForSeconds(slamPause);
             whoosh?.Play();
             rb2d.AddForce(Vector2.down * slamForce);
+            timer.Begin();
         }
 
-        public void Reset()
+        public void Reset() => rb2d.drag = startingDrag;
+
+        public bool CanSlam()
         {
-            rb2d.drag = startingDrag;
+            return !boxCaster.IsHit() && !timer.IsActive();
         }
-
-        public bool CanSlam() => !boxCaster.IsHit();
     }
 }

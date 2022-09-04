@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Scriptables.Events;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Scriptables.Events;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -8,9 +9,9 @@ namespace Assets.Scripts
         [SerializeField] private GameObject spriteGameObject;
         [SerializeField] private Vector2 scaleTo;
         [SerializeField] private float scaleDuration;
-        [SerializeField] private AudioSource normalLand, hardLand;
         [SerializeField] private float heavyVelocityThreshold, minimumLandThreshold, normalShakeForce, heavyShakeForce;
         [SerializeField] private CamShakeEvent camShakeEvent;
+        [SerializeField] private RandomPitchPlayer hardLandPlayer, normalLandPlayer;
 
         private ParticleSystem ps;
 
@@ -21,7 +22,6 @@ namespace Assets.Scripts
             float absVelocity = Mathf.Abs(landVelocity);
             if (absVelocity >= minimumLandThreshold)
             {
-                //Debug.Log(absVelocity);
                 PlayAudioByMagnitude(absVelocity);
                 PlayAnimation();
                 HandleShake(absVelocity);
@@ -39,7 +39,7 @@ namespace Assets.Scripts
 
         private void PlayAudioByMagnitude(float landVelocity)
         {
-            AudioSource source = landVelocity >= heavyVelocityThreshold ? hardLand : normalLand;
+            RandomPitchPlayer source = landVelocity >= heavyVelocityThreshold ? hardLandPlayer : normalLandPlayer;
             source.Play();
         }
 

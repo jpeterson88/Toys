@@ -7,7 +7,6 @@ namespace Assets.Scripts
 {
     class JumpComponent : MonoBehaviour
     {
-        [SerializeField] private FacingDirection facingDirection;
         [SerializeField] private Vector2 leftRightForce, verticalForce;
         [SerializeField] private CircleCollider2D environmentInteractor;
 
@@ -50,8 +49,7 @@ namespace Assets.Scripts
 
             if (Mathf.Abs(moveVector.x) > 0)
             {
-                //Vector2 directionFacing = facingDirection.GetFacingDirection();
-                Vector2 appliedForce = moveVector == Vector2.left ? new Vector2(-leftRightForce.x, leftRightForce.y) : new Vector2(leftRightForce.x, leftRightForce.y);
+                Vector2 appliedForce = new Vector2(leftRightForce.x * Mathf.Sign(moveVector.x), leftRightForce.y);
                 rb2d.AddForce(appliedForce, ForceMode2D.Impulse);
             }
             else

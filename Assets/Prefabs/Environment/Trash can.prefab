@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 7597275289515662099}
   - component: {fileID: 7597275289515662098}
   - component: {fileID: 7597275289515662108}
+  - component: {fileID: 1165477070833213822}
   m_Layer: 8
   m_Name: Trash can
   m_TagString: Untagged
@@ -250,6 +251,28 @@ PolygonCollider2D:
       - {x: -0.3154539, y: -0.49118555}
       - {x: 0.32516688, y: -0.48824733}
       - {x: 0.47192135, y: 0.482331}
+--- !u!114 &1165477070833213822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597275289515662096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8139e1fec37759147854689fb3f778a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSpawnItems:
+  - {fileID: 7674566895749094837, guid: bba68504678985642985ae2aa61169dd, type: 3}
+  - {fileID: 309407683890659769, guid: d54a6b66a8c28b3468756385a65a368a, type: 3}
+  - {fileID: 4108438500756744885, guid: 118ac49b54309f343be6d3bb74169a58, type: 3}
+  - {fileID: 4108438500756744885, guid: 48044a0ada512874ea916c8eae5ab5d7, type: 3}
+  minSpawnAmount: 1
+  maxSpawnAmount: 3
+  spawnParent: {fileID: 0}
+  localSpawnPoint: {fileID: 7597275289062336134}
+  colliderToVelocity: {fileID: 7597275290422136726}
 --- !u!1 &7597275290422136724
 GameObject:
   m_ObjectHideFlags: 0

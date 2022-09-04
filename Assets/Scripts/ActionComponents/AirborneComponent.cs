@@ -11,14 +11,14 @@ namespace Assets.Scripts.ActionComponents
 
         public void Move(Vector2 inputDirection)
         {
+            Vector2 velocity = Vector2.zero;
             if (inputDirection.x > 0)
             {
                 if (useForce)
                     rb2d.AddForce(Vector2.right * moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 else
                 {
-                    if (rb2d.velocity.magnitude < maxSpeed)
-                        rb2d.velocity = new Vector2(rb2d.velocity.x + (moveSpeed * Time.deltaTime), rb2d.velocity.y);
+                    velocity = new Vector2(rb2d.velocity.x + (moveSpeed), rb2d.velocity.y);
                 }
             }
             else if (inputDirection.x < 0)
@@ -27,10 +27,12 @@ namespace Assets.Scripts.ActionComponents
                     rb2d.AddForce(Vector2.left * moveSpeed * Time.deltaTime, ForceMode2D.Force);
                 else
                 {
-                    if (rb2d.velocity.magnitude < maxSpeed)
-                        rb2d.velocity = new Vector2(rb2d.velocity.x - (moveSpeed * Time.deltaTime), rb2d.velocity.y);
+                    velocity = new Vector2(rb2d.velocity.x - (moveSpeed), rb2d.velocity.y);
                 }
             }
+
+            if (velocity != Vector2.zero)
+                rb2d.velocity = new Vector2(Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed), velocity.y);
         }
     }
 }
