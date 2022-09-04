@@ -71,7 +71,6 @@ namespace Assets.Scripts.State.StateHandlers
                     SetState(PlayerStates.Walk);
                     facingDirection.SetFacingDirection(moveVector);
                     movementComponentv2.ApplyMovement(moveVector, sprintPressed);
-                    //movementComponent.Move(moveVector);
                 }
                 else
                 {
@@ -79,7 +78,6 @@ namespace Assets.Scripts.State.StateHandlers
                     sprintPressed = false;
                     movementComponentv2.Stop();
                 }
-                //otherwise we're idle
             }
         }
 

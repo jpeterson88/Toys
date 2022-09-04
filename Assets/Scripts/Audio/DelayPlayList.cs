@@ -5,11 +5,19 @@ namespace Assets.Scripts.Audio
 {
     class DelayPlayList : MonoBehaviour
     {
-        [SerializeField] private RandomPitchPlayer[] players;
         [SerializeField] private TimerComponent timer;
 
         private bool isPlaying;
         private RandomPitchPlayer currentPlayer;
+        private RandomPitchPlayer[] players;
+
+        private void Awake()
+        {
+            players = GetComponentsInChildren<RandomPitchPlayer>();
+
+            if (players == null)
+                Debug.LogError($"Failed to get players on object: {transform.name}");
+        }
 
         public bool IsPlaying() => isPlaying;
 
@@ -25,21 +33,24 @@ namespace Assets.Scripts.Audio
             isPlaying = true;
         }
 
-        public void Stop()
+        public void Stop(bool forceCurrentAudioStop = true)
         {
             isPlaying = false;
 
-            if (currentPlayer != null)
+            if (currentPlayer != null && forceCurrentAudioStop)
                 currentPlayer.Stop();
         }
 
         public void Next()
         {
-            timer.Begin();
-            int value = Random.Range(0, players.Length);
-            currentPlayer = players[value];
+            if (currentPlayer == null || !currentPlayer.IsPlaying())
+            {
+                timer.Begin();
+                int value = Random.Range(0, players.Length);
+                currentPlayer = players[value];
 
-            currentPlayer?.Play();
+                currentPlayer?.Play();
+            }
         }
     }
 }

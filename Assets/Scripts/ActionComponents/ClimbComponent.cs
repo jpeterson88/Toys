@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.SpriteAnims;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.SpriteAnims;
 using UnityEngine;
 
 namespace Assets.Scripts.ActionComponents
@@ -8,6 +9,7 @@ namespace Assets.Scripts.ActionComponents
         [SerializeField] private WalkWobble walkWobble;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private float climbSpeed;
+        [SerializeField] private DelayPlayList playList;
         private float startingGravity;
 
         private void Start() => startingGravity = rb2d.gravityScale;
@@ -22,12 +24,27 @@ namespace Assets.Scripts.ActionComponents
             rb2d.velocity = new Vector2(inputSpeedX * Mathf.Sign(climbVector.x) * climbSpeed * Time.fixedDeltaTime,
                 inputSpeedY * Mathf.Sign(climbVector.y) * climbSpeed * Time.fixedDeltaTime);
 
-            if (Mathf.Abs(climbVector.y) > 0 && !walkWobble.IsWobbling())
-                walkWobble.StartWobble();
-            else if (walkWobble.IsWobbling())
+            if (Mathf.Abs(climbVector.y) > 0)
+            {
+                if (!walkWobble.IsWobbling())
+                    walkWobble.StartWobble();
+
+                if (!playList.IsPlaying())
+                    playList.Play();
+            }
+            else
+            {
                 walkWobble.StopWobble();
+
+                playList.Stop(false);
+            }
         }
 
-        public void Reset() => rb2d.gravityScale = startingGravity;
+        public void Reset()
+        {
+            rb2d.gravityScale = startingGravity;
+            walkWobble.StopWobble();
+            playList.Stop(false);
+        }
     }
 }
