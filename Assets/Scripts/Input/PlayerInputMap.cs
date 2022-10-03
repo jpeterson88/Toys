@@ -16,6 +16,8 @@ namespace Assets.Scripts.Input
 
         public Action TriggerRPressed { get; set; }
 
+        public Action LockOnPressed { get; set; }
+
         public void SetMoveVector(CallbackContext callbackContext) => currentMoveVector = callbackContext.ReadValue<Vector2>();
 
         public Vector2 GetMoveVector() => currentMoveVector;
@@ -36,6 +38,12 @@ namespace Assets.Scripts.Input
         {
             if (callbackContext.performed)
                 SprintPressed?.Invoke();
+        }
+
+        public void OnLockPressed(CallbackContext callbackContext)
+        {
+            if (callbackContext.performed)
+                LockOnPressed?.Invoke();
         }
 
         public void OnTriggerLPressed() => TriggerLPressed?.Invoke();

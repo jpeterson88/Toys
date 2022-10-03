@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8e8a93375a79c4a96c865affb7e074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 4189121079469682780}
   minPitch: 0.7
   maxPitch: 1.5
 --- !u!82 &4189121079469682780
@@ -243,7 +242,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9d2fbeafeed026c4c8c8f2ba5040a307, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

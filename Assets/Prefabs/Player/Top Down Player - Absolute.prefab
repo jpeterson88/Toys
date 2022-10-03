@@ -22,10 +22,70 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6468049
       objectReference: {fileID: 0}
-    - target: {fileID: 3160048711678938913, guid: 750737e0079848f4bbe24d863f317716,
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
-      propertyPath: m_LinearDrag
-      value: 25
+      propertyPath: m_ActionEvents.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: b719a3e0-7def-450a-9803-24c09e7af5bd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 4cf5dfb8-951b-4d7e-910d-133f27ac634d
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/Sprint[/Keyboard/shift,/Keyboard/numpad0]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: Player/LockOn[/Keyboard/slash]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8661372612661208256}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLockPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3160048711678938968, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
@@ -112,11 +172,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3517711
       objectReference: {fileID: 0}
-    - target: {fileID: 3160048712705743790, guid: 750737e0079848f4bbe24d863f317716,
-        type: 3}
-      propertyPath: speed
-      value: 4000
-      objectReference: {fileID: 0}
     - target: {fileID: 5283258204451896292, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -156,6 +211,18 @@ PrefabInstance:
     - {fileID: 3160048713409424073, guid: 750737e0079848f4bbe24d863f317716, type: 3}
     - {fileID: 3160048711979473222, guid: 750737e0079848f4bbe24d863f317716, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 750737e0079848f4bbe24d863f317716, type: 3}
+--- !u!114 &7083050134384776966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3577498154610965733, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b473b31a1115d794890d6acaafee120d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8661372611533189197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3160048712705743790, guid: 750737e0079848f4bbe24d863f317716,
@@ -213,10 +280,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5946ededfcabe4f9cb004167f1e966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5000
+  moveSpeed: 1600
   rotationSpeed: 250
   rb2d: {fileID: 8661372612661208258}
   walkSfx: {fileID: 8661372611680942438}
+  lockOnComponent: {fileID: 7083050134384776966}
+--- !u!114 &8661372612661208256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3160048711678938915, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aea41889802a294a9144622edf822fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8661372612661208258 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3160048711678938913, guid: 750737e0079848f4bbe24d863f317716,
