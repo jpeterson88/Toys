@@ -7,7 +7,7 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
     class TopDownMoveHandler : StateHandlerBase
     {
         [SerializeField] private TopDownMovementComponent movement;
-
+        [SerializeField] private TopDownHopComponent hopComponent;
         private IInput input;
 
         private void Awake()
@@ -23,7 +23,10 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
         private void HandleAttack2Pressed()
         {
             if (IsInCurrentHandlerState())
+            {
+                hopComponent.SetLaunchDir(input.GetMoveVector());
                 SetState(PlayerStates.Attack2);
+            }
         }
 
         internal override void OnFixedUpdate()

@@ -6,6 +6,7 @@ namespace Assets.Scripts.Interactables
     public class ObjectTriggerEntered : MonoBehaviour
     {
         [SerializeField] private TransformListVariable detectedObjects;
+        private void Awake() => detectedObjects.ClearList(false);
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

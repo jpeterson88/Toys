@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5700342180764961113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555271974296855923}
+  - component: {fileID: 3861239048557815579}
+  m_Layer: 0
+  m_Name: Hop Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &555271974296855923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5700342180764961113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8661372612800609162}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3861239048557815579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5700342180764961113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824cac50dd6e989468363840e5ed89d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canHandleStates: 0a000000
+  hopComponent: {fileID: 8202647038593378703}
+  stateFrame: 20
 --- !u!1001 &6046609233736772579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +54,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 373857810326602771, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1747672479762553776, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
       propertyPath: m_Color.b
@@ -21,6 +73,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.6468049
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466977582759707244, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: launchSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
@@ -51,6 +108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3160048711678938914, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
@@ -172,6 +234,36 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3517711
       objectReference: {fileID: 0}
+    - target: {fileID: 3160048712782644184, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577498154610965733, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139676173917155800, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: resetDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139676173917155800, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: wobbleDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139676173917155800, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: squashAdjustment
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139676173917155800, guid: 750737e0079848f4bbe24d863f317716,
+        type: 3}
+      propertyPath: wobbleAdjustment
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 5283258204451896292, guid: 750737e0079848f4bbe24d863f317716,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -223,6 +315,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b473b31a1115d794890d6acaafee120d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8202647038593378703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2466977582759707244, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16532d56872b6684bb8aba2a86402720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8661372611533189197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3160048712705743790, guid: 750737e0079848f4bbe24d863f317716,
@@ -262,6 +366,8 @@ MonoBehaviour:
   canHandleStates: 0000000001000000
   movement: {fileID: 1675487473176413121}
   chargeComponent: {fileID: 8661372611533189197}
+  lockOnComponent: {fileID: 7083050134384776966}
+  hopComponent: {fileID: 8202647038593378703}
 --- !u!1 &8661372612410978979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3160048711979473216, guid: 750737e0079848f4bbe24d863f317716,
@@ -300,6 +406,12 @@ MonoBehaviour:
 --- !u!50 &8661372612661208258 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3160048711678938913, guid: 750737e0079848f4bbe24d863f317716,
+    type: 3}
+  m_PrefabInstance: {fileID: 6046609233736772579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8661372612800609162 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3160048711824625769, guid: 750737e0079848f4bbe24d863f317716,
     type: 3}
   m_PrefabInstance: {fileID: 6046609233736772579}
   m_PrefabAsset: {fileID: 0}

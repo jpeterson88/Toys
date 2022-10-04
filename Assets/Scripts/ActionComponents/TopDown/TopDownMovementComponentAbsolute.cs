@@ -13,30 +13,28 @@ namespace Assets.Scripts.ActionComponents.TopDown
         internal void ApplyMovement(Vector2 moveVector)
         {
             //Is walking
+            Vector2 direction = new Vector2(moveVector.x, moveVector.y);
+
             if (moveVector.magnitude != 0)
             {
                 if (!walkSfx.isPlaying)
                     walkSfx?.Play();
 
-                //Lock on player rotation
-                if (lockOnComponent != null && lockOnComponent.GetLockedTarget() != null)
-                {
-                    transform.parent.LookAt(lockOnComponent.GetLockedTarget());
-                }
-                //Manually steer player rotation
-                else
-                {
-                    Vector2 direction = new Vector2(moveVector.x, moveVector.y);
-                    rb2d.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+                rb2d.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+            }
 
-                    direction.Normalize();
+            direction.Normalize();
 
-                    if (direction != Vector2.zero)
-                    {
-                        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
-                        transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, rotationSpeed * Time.deltaTime);
-                    }
-                }
+            RotateMovement(direction);
+        }
+
+        private void RotateMovement(Vector2 direction)
+        {
+            //Manually steer player rotation
+            if ((lockOnComponent == null || lockOnComponent.GetLockedTarget() == null) && direction != Vector2.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
+                transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
 

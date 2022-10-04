@@ -1284,6 +1284,16 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
       value: 6.7349215
       objectReference: {fileID: 0}
+    - target: {fileID: 8661372611606722858, guid: 1c4b9b4784ee159439043d5a5253b20e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661372612602967549, guid: 1c4b9b4784ee159439043d5a5253b20e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8661372612661208251, guid: 1c4b9b4784ee159439043d5a5253b20e,
         type: 3}
       propertyPath: m_Name
@@ -1352,7 +1362,7 @@ PrefabInstance:
     - target: {fileID: 8661372612800609163, guid: 1c4b9b4784ee159439043d5a5253b20e,
         type: 3}
       propertyPath: enableLogs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4b9b4784ee159439043d5a5253b20e, type: 3}
@@ -1513,6 +1523,11 @@ PrefabInstance:
     - target: {fileID: 1361175265471287985, guid: 2da0462790b23064591c163601213300,
         type: 3}
       propertyPath: enableLogs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361175266214936523, guid: 2da0462790b23064591c163601213300,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1361175266214936525, guid: 2da0462790b23064591c163601213300,

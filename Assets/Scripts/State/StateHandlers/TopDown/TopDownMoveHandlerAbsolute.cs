@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.ActionComponents.TopDown;
 using Assets.Scripts.Input;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers.TopDown
@@ -8,6 +9,8 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
     {
         [SerializeField] private TopDownMovementComponentAbsolute movement;
         [SerializeField] private TopDownChargeComponent chargeComponent;
+        [SerializeField] private LockOnComponent lockOnComponent;
+        [SerializeField] private TopDownHopComponent hopComponent;
 
         private IInput input;
 
@@ -17,8 +20,17 @@ namespace Assets.Scripts.State.StateHandlers.TopDown
             if (input == null)
                 Debug.LogError("failed to find input for Locomotion handler");
 
-            //input.JumpPressed += HandleJumpPressed;
+            input.JumpPressed += HandleJumpPressed;
             input.Attack2Pressed += HandleAttack2Pressed;
+        }
+
+        private void HandleJumpPressed()
+        {
+            if (IsInCurrentHandlerState() && lockOnComponent.GetLockedTarget() != null)
+            {
+                hopComponent.SetLaunchDir(input.GetMoveVector());
+                SetState(PlayerStates.Hop);
+            }
         }
 
         private void HandleAttack2Pressed()

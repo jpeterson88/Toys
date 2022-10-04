@@ -9,13 +9,11 @@ namespace Assets.Scripts.ActionComponents.TopDown
     {
         [SerializeField] private TransformListVariable detectedObjects;
         [SerializeField] private PlayerInputMap playerInputMap;
+        [SerializeField] private float rotationSpeed;
 
         private Transform currentLockedTarget;
 
-        private void Start()
-        {
-            playerInputMap.LockOnPressed += HandleLockPressed;
-        }
+        private void Start() => playerInputMap.LockOnPressed += HandleLockPressed;
 
         private void HandleLockPressed()
         {
@@ -24,13 +22,25 @@ namespace Assets.Scripts.ActionComponents.TopDown
             var firstDetected = detectedObjects.Get().FirstOrDefault();
             if (firstDetected != null && (currentLockedTarget == null || currentLockedTarget != firstDetected))
             {
-                Debug.Log("Set Target");
                 currentLockedTarget = firstDetected;
             }
-            else if (currentLockedTarget != null && firstDetected == currentLockedTarget)
+            //Currently doesn't handle multiple detected targets
+            else if (currentLockedTarget != null)
             {
                 ClearLockOn();
-                Debug.Log("Clear Lock");
+            }
+        }
+
+        public void Update()
+        {
+            var lockedTarget = GetLockedTarget();
+
+            if (lockedTarget != null)
+            {
+                Vector3 vectorToTarget = lockedTarget.position - transform.root.position;
+
+                Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+                transform.root.rotation = Quaternion.RotateTowards(transform.root.rotation, toRotation, Time.deltaTime * rotationSpeed);
             }
         }
 

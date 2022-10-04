@@ -11,6 +11,7 @@
         Climb = 6,
         Ledge = 7,
         Hurt = 8,
-        GroundSlam = 9
+        GroundSlam = 9,
+        Hop = 10
     }
 }
